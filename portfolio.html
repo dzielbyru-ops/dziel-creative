@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio — DZiel Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════
+   THEME TOKENS
+═══════════════════════════════════ */
+:root { --t: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+
+[data-theme="dark"] {
+  --bg:        #0F172A;
+  --bg2:       #0B1120;
+  --surface:   #1E293B;
+  --elevated:  #273549;
+  --txt:       #FFFFFF;
+  --muted:     #94A3B8;
+  --accent:    #4F46E5;
+  --accentH:   #4338CA;
+  --accentS:   rgba(79,70,229,0.18);
+  --accentB:   rgba(79,70,229,0.35);
+  --lilac:     #C7D2FE;
+  --border:    #1E293B;
+  --borderM:   #334155;
+  --navBg:     rgba(15,23,42,0.95);
+  --cardSh:    0 16px 48px rgba(0,0,0,0.5);
+  --tkBg:      #1E293B;
+  --tkBdr:     #334155;
+  --ftrBg:     #060D1A;
+  --ftrTxt:    rgba(255,255,255,0.38);
+  --marqueeT:  rgba(255,255,255,0.9);
+  --filterBg:  #1E293B;
+  --filterBdr: #334155;
+  --filterAct: #4F46E5;
+  --overlay:   rgba(15,23,42,0.88);
+}
+[data-theme="light"] {
+  --bg:        #F8FAFC;
+  --bg2:       #F1F5F9;
+  --surface:   #FFFFFF;
+  --elevated:  #F8FAFC;
+  --txt:       #0F172A;
+  --muted:     #64748B;
+  --accent:    #4F46E5;
+  --accentH:   #4338CA;
+  --accentS:   rgba(79,70,229,0.08);
+  --accentB:   rgba(79,70,229,0.2);
+  --lilac:     #4338CA;
+  --border:    #E2E8F0;
+  --borderM:   #CBD5E1;
+  --navBg:     rgba(248,250,252,0.95);
+  --cardSh:    0 8px 32px rgba(0,0,0,0.08);
+  --tkBg:      #E5E7EB;
+  --tkBdr:     #D1D5DB;
+  --ftrBg:     #0F172A;
+  --ftrTxt:    rgba(255,255,255,0.38);
+  --marqueeT:  rgba(255,255,255,0.95);
+  --filterBg:  #FFFFFF;
+  --filterBdr: #E2E8F0;
+  --filterAct: #4F46E5;
+  --overlay:   rgba(15,23,42,0.75);
+}
+
+/* ═══════════════════════════════════
+   BASE
+═══════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;transition:var(--t)}
+
+/* ═══════════════════════════════════
+   TOGGLE
+═══════════════════════════════════ */
+.theme-toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;background:none;border:none;padding:0}
+.toggle-track{width:50px;height:27px;background:var(--tkBg);border:1.5px solid var(--tkBdr);border-radius:99px;position:relative;flex-shrink:0;transition:background 0.35s,border-color 0.35s}
+.toggle-knob{position:absolute;top:3px;left:3px;width:19px;height:19px;background:var(--accent);border-radius:50%;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1)}
+[data-theme="light"] .toggle-knob{transform:translateX(23px)}
+.toggle-icon{font-size:0.9rem}
+.toggle-label{font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500;transition:color 0.3s}
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,var(--t)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;color:var(--txt);text-decoration:none;transition:color 0.3s}
+.logo span{color:#818CF8}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:0.84rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--txt)}
+.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
+.nav-cta:hover{background:var(--accentH);transform:translateY(-1px)}
+
+/* ═══════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════ */
+.page-hero{
+  padding: 160px 60px 80px;
+  background: radial-gradient(ellipse at 60% 0%, rgba(79,70,229,0.18) 0%, transparent 55%), var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: var(--t);
+}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.page-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:20px}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--txt);margin-bottom:20px}
+.page-hero h1 em{font-style:italic;color:#818CF8}
+.page-hero p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:540px;margin-bottom:40px}
+.page-hero-meta{display:flex;gap:48px;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--txt);line-height:1}
+.meta-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+/* ═══════════════════════════════════
+   FILTER BAR
+═══════════════════════════════════ */
+.filter-bar{
+  position: sticky; top: 65px; z-index: 900;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 0 60px; transition: var(--t);
+}
+.filter-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;padding:16px 0;scrollbar-width:none}
+.filter-bar-inner::-webkit-scrollbar{display:none}
+.filter-btn{
+  background: none; border: 1.5px solid var(--filterBdr);
+  color: var(--muted); padding: 8px 20px; border-radius: 99px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.25s;
+}
+.filter-btn:hover{border-color:var(--accent);color:var(--txt)}
+.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ═══════════════════════════════════
+   PORTFOLIO GRID
+═══════════════════════════════════ */
+.portfolio-section{padding:60px 60px 120px;transition:var(--t)}
+.portfolio-section-inner{max-width:1200px;margin:0 auto}
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Featured (first project) spans 2 cols */
+.project-card{
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s, opacity 0.4s;
+  cursor: pointer; position: relative;
+}
+.project-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--cardSh);
+  border-color: var(--accentB);
+}
+.project-card.featured{ grid-column: span 2; }
+.project-card.hidden{ display: none; }
+
+/* Thumb */
+.project-thumb{
+  position: relative; overflow: hidden;
+}
+.project-card:not(.featured) .project-thumb{ height: 220px; }
+.project-card.featured .project-thumb{ height: 320px; }
+
+.thumb-bg{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem; position:relative;
+  transition: transform 0.5s ease;
+}
+.project-card:hover .thumb-bg{ transform: scale(1.04); }
+
+.tb-1{background:linear-gradient(135deg,#312E81,#4F46E5)}
+.tb-2{background:linear-gradient(135deg,#1E3A5F,#2563EB)}
+.tb-3{background:linear-gradient(135deg,#1F2937,#374151)}
+.tb-4{background:linear-gradient(135deg,#2D1B69,#7C3AED)}
+.tb-5{background:linear-gradient(135deg,#064E3B,#059669)}
+.tb-6{background:linear-gradient(135deg,#1E1B4B,#6D28D9)}
+.tb-7{background:linear-gradient(135deg,#7C2D12,#EA580C)}
+.tb-8{background:linear-gradient(135deg,#0C4A6E,#0EA5E9)}
+.tb-9{background:linear-gradient(135deg,#3B0764,#A855F7)}
+
+/* Overlay on hover */
+.project-overlay{
+  position:absolute;inset:0;
+  background: var(--overlay);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0; transition:opacity 0.35s;
+}
+.project-card:hover .project-overlay{ opacity:1; }
+.overlay-cta{
+  background:#fff;color:#0F172A;
+  padding:11px 28px;border-radius:3px;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  transform:translateY(10px);transition:transform 0.35s;
+}
+.project-card:hover .overlay-cta{transform:translateY(0)}
+
+/* Country badge */
+.country-badge{
+  position:absolute;top:14px;left:14px;
+  background:rgba(15,23,42,0.75);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:4px 10px;border-radius:20px;
+  font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.9);
+  letter-spacing:0.04em;
+}
+
+/* Info */
+.project-info{ padding: 24px 26px 28px; }
+.project-tag{
+  font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--lilac);font-weight:500;margin-bottom:8px;transition:color 0.3s;
+}
+.project-info h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:400;color:var(--txt);
+  margin-bottom:8px;line-height:1.2;transition:color 0.3s;
+}
+.project-card.featured .project-info h3{font-size:1.6rem}
+.project-info p{
+  font-size:0.85rem;color:var(--muted);line-height:1.65;
+  margin-bottom:16px;transition:color 0.3s;
+}
+.project-meta-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:14px;border-top:1px solid var(--border);
+  transition:border-color 0.3s;
+}
+.project-services{display:flex;gap:6px;flex-wrap:wrap}
+.project-service-tag{
+  font-size:0.7rem;padding:3px 10px;border-radius:20px;
+  background:var(--accentS);color:var(--lilac);
+  border:1px solid var(--accentB);letter-spacing:0.04em;
+  transition:all 0.3s;
+}
+.project-year{font-size:0.78rem;color:var(--muted);font-weight:500}
+
+/* Empty state */
+.empty-state{
+  grid-column:1/-1;
+  text-align:center;padding:80px 20px;
+  display:none;
+}
+.empty-state.show{display:block}
+.empty-state p{font-size:1.05rem;color:var(--muted)}
+
+/* ═══════════════════════════════════
+   CTA STRIP
+═══════════════════════════════════ */
+.cta-strip{
+  background:var(--accent);
+  padding:72px 60px;text-align:center;
+}
+.cta-strip h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:300;color:#fff;margin-bottom:16px;
+}
+.cta-strip h2 em{font-style:italic;color:var(--lilac)}
+.cta-strip p{font-size:1rem;color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent);padding:14px 36px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
+.btn-white:hover{background:var(--lilac);transform:translateY(-2px)}
+.btn-ghost{border:2px solid rgba(255,255,255,0.45);color:#fff;padding:13px 36px;border-radius:3px;font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transition:var(--t)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand p{font-size:0.85rem;color:rgba(255,255,255,0.42);line-height:1.7;margin-top:14px;max-width:280px}
+.footer-col h5{font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.82);font-weight:500;margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul a{font-size:0.84rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s}
+.footer-col ul a:hover{color:#818CF8}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:0.8rem}
+.footer-socials{display:flex;gap:14px}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.45);font-size:0.82rem;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:#4F46E5;color:#818CF8}
+
+/* ═══════════════════════════════════
+   REVEAL
+═══════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media(max-width:1024px){
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .project-card.featured{grid-column:span 2}
+}
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .page-hero,.portfolio-section,.filter-bar{padding-left:24px;padding-right:24px}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .project-card.featured .project-info h3{font-size:1.3rem}
+  footer{padding:40px 24px 28px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .toggle-label{display:none}
+  .cta-strip{padding:52px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="logo" href="index.html">DZiel <span>Creative</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="portfolio.html" class="active">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="toggle-icon" id="toggleIcon">☀️</span>
+      <div class="toggle-track"><div class="toggle-knob"></div></div>
+      <span class="toggle-label" id="toggleLabel">Light</span>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Start a Project</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow reveal">Our Work</div>
+    <h1 class="reveal reveal-delay-1">Projects we're <em>proud of</em></h1>
+    <p class="reveal reveal-delay-2">From healthcare portals to fintech dashboards — every project is approached thoughtfully, with care for both users and business goals. Here's a selection of our work across the UK, USA, and Australia.</p>
+    <div class="page-hero-meta reveal reveal-delay-3">
+      <div class="meta-item"><span class="meta-num">9+</span><span class="meta-label">Projects Shown</span></div>
+      <div class="meta-item"><span class="meta-num">3</span><span class="meta-label">Countries</span></div>
+      <div class="meta-item"><span class="meta-num">6</span><span class="meta-label">Service Areas</span></div>
+      <div class="meta-item"><span class="meta-num">100%</span><span class="meta-label">Client Satisfaction</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="web">Web Design</button>
+    <button class="filter-btn" data-filter="app">App Design</button>
+    <button class="filter-btn" data-filter="branding">Branding</button>
+    <button class="filter-btn" data-filter="ux">UX / Audit</button>
+    <button class="filter-btn" data-filter="uk">🇬🇧 UK</button>
+    <button class="filter-btn" data-filter="usa">🇺🇸 USA</button>
+    <button class="filter-btn" data-filter="au">🇦🇺 Australia</button>
+  </div>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio-section">
+  <div class="portfolio-section-inner">
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- 01 — Featured -->
+      <div class="project-card featured reveal" data-tags="ux web uk">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-1">🏥</div>
+          <div class="country-badge">🇬🇧 United Kingdom</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">UX Redesign · Healthcare</div>
+          <h3>HealthTrack Patient Portal</h3>
+          <p>Full end-to-end UX audit and redesign of a patient-facing NHS-adjacent portal. We identified 23 critical friction points, restructured the appointment booking flow, and delivered a design system that reduced booking time by 60% and improved satisfaction scores by 38%.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">UX Audit</span>
+              <span class="project-service-tag">Web Design</span>
+              <span class="project-service-tag">Design System</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="project-card reveal reveal-delay-1" data-tags="web branding uk">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-2">🛍️</div>
+          <div class="country-badge">🇬🇧 United Kingdom</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">Web Design · E-commerce</div>
+          <h3>Maison Collective Brand & Store</h3>
+          <p>End-to-end branding and Shopify website for an artisan homeware brand launching in the UK. Increased average order value by 42% in the first quarter post-launch.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">Branding</span>
+              <span class="project-service-tag">Web Design</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="project-card reveal" data-tags="app ux usa">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-3">📊</div>
+          <div class="country-badge">🇺🇸 United States</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">App Design · FinTech</div>
+          <h3>Quantix Investment Dashboard</h3>
+          <p>Complex data visualisation made simple — a mobile-first investment app for a US-based fintech startup, designed for clarity and user confidence.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">App Design</span>
+              <span class="project-service-tag">UX</span>
+            </div>
+            <span class="project-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="project-card reveal reveal-delay-1" data-tags="branding web au">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-4">🍃</div>
+          <div class="country-badge">🇦🇺 Australia</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">Branding · Wellness</div>
+          <h3>Grounded Co. Brand Identity</h3>
+          <p>Full visual identity design for a Sydney-based wellness brand — logo, colour system, typography, packaging guidelines, and brand book.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">Branding</span>
+              <span class="project-service-tag">Graphics</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="project-card reveal reveal-delay-2" data-tags="ux app usa">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-5">🎓</div>
+          <div class="country-badge">🇺🇸 United States</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">App Design · EdTech</div>
+          <h3>LearnPath Student App</h3>
+          <p>UX consultation and app redesign for a US EdTech platform serving 40,000+ students. Improved course completion rates by 29% through better onboarding and progress tracking.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">App Design</span>
+              <span class="project-service-tag">Consultation</span>
+            </div>
+            <span class="project-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="project-card reveal" data-tags="web ux uk">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-6">🏢</div>
+          <div class="country-badge">🇬🇧 United Kingdom</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">Web Design · Consulting</div>
+          <h3>BrightPath Consulting Website</h3>
+          <p>Complete website redesign for a UK management consultancy — new information architecture, brand refresh, and a lead generation-focused homepage.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">Web Design</span>
+              <span class="project-service-tag">UX</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="project-card reveal reveal-delay-1" data-tags="app branding au">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-7">🚗</div>
+          <div class="country-badge">🇦🇺 Australia</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">App Design · Transport</div>
+          <h3>DriveEasy Fleet App</h3>
+          <p>Mobile app design for a Melbourne-based fleet management startup. Designed from zero to launch-ready prototype in 6 weeks, including user testing and design handoff.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">App Design</span>
+              <span class="project-service-tag">Prototyping</span>
+            </div>
+            <span class="project-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="project-card reveal reveal-delay-2" data-tags="ux web usa">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-8">💬</div>
+          <div class="country-badge">🇺🇸 United States</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">UX Audit · SaaS</div>
+          <h3>Taskly App UX Audit</h3>
+          <p>Deep-dive UX evaluation of a US productivity SaaS with 25,000 users. Delivered a 47-page audit report with prioritised recommendations that drove a 34% drop in churn.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">UX Audit</span>
+              <span class="project-service-tag">Consultation</span>
+            </div>
+            <span class="project-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="project-card reveal reveal-delay-3" data-tags="branding web au">
+        <div class="project-thumb">
+          <div class="thumb-bg tb-9">✨</div>
+          <div class="country-badge">🇦🇺 Australia</div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
+        </div>
+        <div class="project-info">
+          <div class="project-tag">Branding · Beauty</div>
+          <h3>Lumière Beauty Rebrand</h3>
+          <p>Full rebrand and website for a Brisbane beauty studio — new visual identity, photography art direction, and an appointment booking website that doubled online bookings within 3 months.</p>
+          <div class="project-meta-row">
+            <div class="project-services">
+              <span class="project-service-tag">Branding</span>
+              <span class="project-service-tag">Web Design</span>
+            </div>
+            <span class="project-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState">
+        <p>No projects match this filter — <a href="#" style="color:var(--accent)" onclick="resetFilter(event)">view all projects</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Ready to start your <em>next project?</em></h2>
+  <p>Whether you have a clear brief or just an idea — we'd love to hear about it. Let's create something meaningful together.</p>
+  <div class="cta-actions">
+    <a class="btn-white" href="index.html#contact">Start a Project</a>
+    <a class="btn-ghost" href="index.html">Back to Home</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">DZiel <span>Creative</span></a>
+      <p>A UK-based design studio creating purposeful, user-centred digital experiences for clients in UK, USA & Australia.</p>
+    </div>
+    <div class="footer-col"><h5>Services</h5><ul>
+      <li><a href="index.html#services">Website Design</a></li>
+      <li><a href="index.html#services">App Design</a></li>
+      <li><a href="index.html#services">Branding & Graphics</a></li>
+      <li><a href="index.html#services">UX Evaluation</a></li>
+      <li><a href="index.html#services">UX Consultation</a></li>
+      <li><a href="index.html#services">Design Mentoring</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Studio</h5><ul>
+      <li><a href="index.html#about">About Us</a></li>
+      <li><a href="index.html#process">Our Process</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Connect</h5><ul>
+      <li><a href="index.html#contact">Start a Project</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Behance</a></li>
+      <li><a href="#">Dribbble</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
+    <div class="footer-socials">
+      <a class="social-link" href="#" title="LinkedIn">in</a>
+      <a class="social-link" href="#" title="Behance">Be</a>
+      <a class="social-link" href="#" title="Dribbble">Dr</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──────────────────────
+const html   = document.documentElement;
+const toggle = document.getElementById('themeToggle');
+const icon   = document.getElementById('toggleIcon');
+const label  = document.getElementById('toggleLabel');
+const saved  = localStorage.getItem('dziel-theme') || 'dark';
+applyTheme(saved);
+toggle.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem('dziel-theme', next);
+});
+function applyTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  icon.textContent  = theme === 'light' ? '🌙' : '☀️';
+  label.textContent = theme === 'light' ? 'Dark' : 'Light';
+}
+
+// ── FILTER ────────────────────────────
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards      = document.querySelectorAll('.project-card');
+const empty      = document.getElementById('emptyState');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      const show = f === 'all' || tags.split(' ').includes(f);
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    empty.classList.toggle('show', visible === 0);
+  });
+});
+
+function resetFilter(e) {
+  e.preventDefault();
+  filterBtns.forEach(b => b.classList.remove('active'));
+  filterBtns[0].classList.add('active');
+  cards.forEach(c => c.classList.remove('hidden'));
+  empty.classList.remove('show');
+}
+
+// ── SCROLL REVEAL ─────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => io.observe(r));
+
+// ── NAV SHRINK ────────────────────────
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.style.padding = window.scrollY > 60 ? '13px 60px' : '20px 60px';
+}, { passive: true });
+</script>
+</body>
+</html>
