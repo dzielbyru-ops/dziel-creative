@@ -501,7 +501,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:60px 60px 36px}
   <div class="section-inner">
     <div class="portfolio-header">
       <div><div class="section-label reveal">Selected Work</div><h2 class="reveal reveal-delay-1">Projects we're <em>proud of</em></h2></div>
-      <a class="btn-outline reveal" href="#contact">See All Work</a>
+      <a class="btn-outline reveal" href="portfolio.html">See All Work</a>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-item reveal"><div class="portfolio-thumb pt-1"><div class="portfolio-overlay"><span style="font-size:3rem">🏥</span></div></div><div class="portfolio-info"><div class="portfolio-tag">UX Redesign · Healthcare</div><h3>HealthTrack Patient Portal</h3><p>Full UX audit and redesign — reducing booking friction by 60% and improving satisfaction scores significantly.</p></div></div>
@@ -533,7 +533,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:60px 60px 36px}
         <p class="contact-tagline reveal reveal-delay-2">Whether you have a clear brief or just an idea — we'd love to hear about it. Fill in the form and we'll get back to you within 24 hours.</p>
         <div class="contact-details reveal reveal-delay-3">
           <div class="contact-item"><div class="contact-item-icon">📍</div>Based in UK · Clients in UK, USA & Australia</div>
-          <div class="contact-item"><div class="contact-item-icon">✉️</div>hello@dzielcreative.com</div>
+          <div class="contact-item"><div class="contact-item-icon">✉️</div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acc4c9c0c0c3ecc8d6c5c9c0cfdec9cdd8c5dac982cfc3c1">[email&#160;protected]</a></div>
           <div class="contact-item"><div class="contact-item-icon">🕒</div>Mon–Fri, 9:00am–6:00pm GMT</div>
         </div>
       </div>
@@ -575,7 +575,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:60px 60px 36px}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── THEME TOGGLE ──────────────────────
 const html    = document.documentElement;
 const toggle  = document.getElementById('themeToggle');
@@ -619,11 +619,4 @@ window.addEventListener('scroll', () => {
 // ── FORM SUBMIT ───────────────────────
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '✓ Message Sent!';
-  btn.style.background = '#312E81';
-  setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
-}
-</script>
-</body>
-</html>
+  const btn = e.target.querySelector('.
