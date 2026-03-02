@@ -6,7 +6,7 @@
 <title>DZiel Creative — Design That Thinks</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════════
    THEME TOKENS
@@ -108,7 +108,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);over
    NAV
 ═══════════════════════════════════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,var(--t)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;color:var(--txt);text-decoration:none;transition:color 0.3s}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;color:var(--txt);text-decoration:none;transition:color 0.3s}
 .logo span{color:#818CF8}
 .nav-right{display:flex;align-items:center;gap:24px}
 .nav-links{display:flex;gap:36px;list-style:none}
@@ -124,8 +124,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;width:100%}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:28px;transition:color 0.3s}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.8rem);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--txt);margin-bottom:28px;transition:color 0.3s}
-h1 em{font-style:italic;color:#818CF8}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:var(--txt);margin-bottom:28px;transition:color 0.3s}
+h1 em{font-style:normal;font-weight:800;color:#818CF8}
 .hero-desc{font-size:1.04rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:44px;transition:color 0.3s}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .btn-primary{background:var(--accent);color:#fff;padding:15px 36px;border-radius:3px;font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s;display:inline-block}
@@ -137,11 +137,11 @@ h1 em{font-style:italic;color:#818CF8}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .hero-card-badge{position:absolute;top:-16px;right:28px;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 16px;border-radius:20px}
 .hero-card-tag{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:18px;transition:color 0.3s}
-.hero-card h3{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:400;color:var(--txt);margin-bottom:12px;line-height:1.2;transition:color 0.3s}
+.hero-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:600;color:var(--txt);margin-bottom:12px;line-height:1.2;transition:color 0.3s}
 .hero-card p{font-size:0.88rem;color:var(--muted);line-height:1.65;margin-bottom:26px;transition:color 0.3s}
 .hero-card-stat{display:flex;gap:26px;padding-top:22px;border-top:1px solid var(--borderM);transition:border-color 0.3s}
 .stat-item{display:flex;flex-direction:column;gap:4px}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--txt);line-height:1;transition:color 0.3s}
+.stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);line-height:1;transition:color 0.3s}
 .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.04em;transition:color 0.3s}
 .hero-card-flags{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .hero-card-flags span{font-size:0.75rem;font-weight:500;color:var(--lilac);background:var(--accentS);border:1px solid var(--accentB);padding:5px 12px;border-radius:20px;letter-spacing:0.04em;transition:all 0.3s}
@@ -178,8 +178,8 @@ section{padding:110px 60px}
 .section-inner{max-width:1200px;margin:0 auto}
 .section-label{font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:10px;transition:color 0.3s}
 .section-label::before{content:'';width:20px;height:1px;background:var(--accent)}
-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.15;letter-spacing:-0.02em;color:var(--txt);margin-bottom:20px;transition:color 0.3s}
-h2 em{font-style:italic;color:#818CF8}
+h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:var(--txt);margin-bottom:20px;transition:color 0.3s}
+h2 em{font-style:normal;font-weight:800;color:#818CF8}
 
 /* ═══════════════════════════════════
    ABOUT
@@ -192,7 +192,7 @@ h2 em{font-style:italic;color:#818CF8}
 .about-icon-item{background:var(--elevated);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:1.7rem;transition:var(--t)}
 .about-icon-item span{font-size:0.7rem;color:var(--muted);text-align:center;line-height:1.4;transition:color 0.3s}
 .about-accent-box{position:absolute;bottom:-24px;right:-24px;background:var(--accent);color:#fff;padding:26px 30px;border-radius:4px;box-shadow:var(--accentSh)}
-.about-accent-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;line-height:1;color:#fff}
+.about-accent-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.4rem;font-weight:800;line-height:1;color:#fff}
 .about-accent-label{font-size:0.76rem;letter-spacing:0.06em;opacity:0.9}
 .about-content{display:flex;flex-direction:column;gap:24px}
 .about-desc{font-size:1.02rem;color:var(--muted);line-height:1.8;transition:color 0.3s}
@@ -214,11 +214,11 @@ h2 em{font-style:italic;color:#818CF8}
 .service-card:hover::before{transform:scaleX(1)}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(79,70,229,0.2);border-color:var(--accentB)}
 .service-icon{width:50px;height:50px;background:var(--accentS);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;transition:background 0.3s}
-.service-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--txt);margin-bottom:10px;line-height:1.2;transition:color 0.3s}
+.service-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.2rem;font-weight:600;color:var(--txt);margin-bottom:10px;line-height:1.2;transition:color 0.3s}
 .service-card p{font-size:0.86rem;color:var(--muted);line-height:1.7;margin-bottom:20px;transition:color 0.3s}
 .service-link{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--lilac);font-weight:500;text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap 0.2s,color 0.3s}
 .service-link:hover{gap:14px}
-.service-number{position:absolute;top:22px;right:24px;font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--borderM);line-height:1;pointer-events:none;transition:color 0.3s}
+.service-number{position:absolute;top:22px;right:24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:3rem;font-weight:800;color:var(--borderM);line-height:1;pointer-events:none;transition:color 0.3s}
 
 /* ═══════════════════════════════════
    PROCESS
@@ -231,8 +231,8 @@ h2 em{font-style:italic;color:#818CF8}
 .process-step{padding:36px 28px;border-right:1px solid var(--procBdr);transition:background 0.3s}
 .process-step:last-child{border-right:none}
 .process-step:hover{background:rgba(255,255,255,0.08)}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#C7D2FE;opacity:0.7;line-height:1;margin-bottom:16px}
-.process-step h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:#fff;margin-bottom:10px}
+.step-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:700;color:#C7D2FE;opacity:0.7;line-height:1;margin-bottom:16px}
+.process-step h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.15rem;font-weight:600;color:#fff;margin-bottom:10px}
 .process-step p{font-size:0.83rem;color:var(--procTxt);line-height:1.7}
 
 /* ═══════════════════════════════════
@@ -253,7 +253,7 @@ h2 em{font-style:italic;color:#818CF8}
 .portfolio-item:hover .portfolio-overlay{background:rgba(15,23,42,0.25)}
 .portfolio-info{padding:24px 26px 28px}
 .portfolio-tag{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:7px;transition:color 0.3s}
-.portfolio-info h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--txt);margin-bottom:5px;transition:color 0.3s}
+.portfolio-info h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.15rem;font-weight:600;color:var(--txt);margin-bottom:5px;transition:color 0.3s}
 .portfolio-info p{font-size:0.82rem;color:var(--muted);transition:color 0.3s}
 
 /* ═══════════════════════════════════
@@ -262,7 +262,7 @@ h2 em{font-style:italic;color:#818CF8}
 #testimonials{background:var(--bg2);transition:var(--t)}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
 .testimonial-card{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:32px 28px;transition:var(--t)}
-.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--accent);line-height:0.8;margin-bottom:14px}
+.testimonial-quote{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:0.8;margin-bottom:14px}
 .testimonial-card p{font-size:0.9rem;color:var(--muted);line-height:1.75;font-style:italic;margin-bottom:24px;transition:color 0.3s}
 .testimonial-author{display:flex;align-items:center;gap:13px}
 .author-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;color:#fff;flex-shrink:0}
@@ -311,8 +311,8 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:60px 60px 36px}
 /* ═══════════════════════════════════
    SCROLL REVEAL
 ═══════════════════════════════════ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.js-ready .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.js-ready .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
@@ -604,10 +604,11 @@ function applyTheme(theme) {
 }
 
 // ── SCROLL REVEAL ─────────────────────
+document.documentElement.classList.add('js-ready');
 const reveals = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
-}, { threshold: 0.12 });
+}, { threshold: 0.08 });
 reveals.forEach(r => io.observe(r));
 
 // ── NAV SHRINK ────────────────────────
