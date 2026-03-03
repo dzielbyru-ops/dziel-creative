@@ -318,6 +318,77 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
   .toggle-label{display:none}
   .cta-strip{padding:52px 24px}
 }
+
+/* ═══ HAMBURGER + MOBILE MENU (NN/g H6: Recognition not recall) ═══ */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.4s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);padding:100px 32px 120px;flex-direction:column;gap:0;overflow-y:auto;transition:background 0.4s}
+.mobile-menu.open{display:flex}
+.mobile-menu-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s,border-color 0.4s;display:block}
+.mobile-menu-link:hover,.mobile-menu-link.active{color:var(--accent)}
+.mobile-menu-cta{margin-top:28px;background:#4F46E5;color:#fff!important;padding:20px 32px;border-radius:4px;font-size:1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.25s;border-bottom:none!important}
+.mobile-menu-cta:hover{background:#4338CA!important}
+/* Sticky bottom CTA on mobile (NN/g H7: efficiency of use) */
+.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:12px 16px 16px;background:var(--bg);border-top:1px solid var(--border);transition:background 0.4s,border-color 0.4s}
+.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:16px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+/* Mobile hero stats strip */
+.hero-stats-mobile{display:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:28px;transition:background 0.4s,border-color 0.4s}
+.hsm-row{display:flex}
+.hsm-item{flex:1;padding:18px 10px;text-align:center;border-right:1px solid var(--border)}
+.hsm-item:last-child{border-right:none}
+.hsm-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--txt);line-height:1}
+.hsm-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.04em;margin-top:3px}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .toggle-label{display:none}
+  .page-hero{padding:130px 32px 60px}
+  .mob-sticky{display:block}
+  body{padding-bottom:68px}
+}
+@media(max-width:640px){
+  .page-hero{padding:110px 20px 48px}
+  h1{font-size:2rem}
+  h2{font-size:1.65rem}
+  .page-hero h1{font-size:2rem}
+  .hero-actions-page,.page-hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions-page a,.page-hero-actions a{text-align:center}
+  .btn-primary,.btn-outline{padding:14px 20px;font-size:0.82rem}
+}
+@media(max-width:380px){
+  h1{font-size:1.8rem}
+  h2{font-size:1.45rem}
+  .logo{font-size:1.3rem}
+}
+
+
+/* Portfolio page specific */
+@media(max-width:960px){
+  .portfolio-section,.page-hero{padding-left:32px;padding-right:32px}
+  .filter-bar{padding:0 32px}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .project-card.featured{grid-column:span 2}
+  .cta-strip{padding:56px 32px}
+}
+@media(max-width:640px){
+  .portfolio-section,.page-hero{padding-left:20px;padding-right:20px}
+  .filter-bar{padding:0 20px}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .project-card.featured .project-info h3{font-size:1.2rem}
+  .page-hero-meta{gap:24px}
+  .cta-strip{padding:48px 20px}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .cta-actions a{text-align:center}
+}
+
 </style>
 </head>
 <body>
@@ -331,6 +402,9 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
     <li><a href="portfolio.html" class="active">Work</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
@@ -347,6 +421,10 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
     <div class="page-eyebrow reveal">Our Work</div>
     <h1 class="reveal reveal-delay-1">Projects we're <em>proud of</em></h1>
     <p class="reveal reveal-delay-2">From healthcare portals to fintech dashboards — every project is approached thoughtfully, with care for both users and business goals. Here's a selection of our work across the UK, USA, and Australia.</p>
+    <div class="hero-actions-page reveal reveal-delay-4" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+      <a href="contact.html" style="background:#4F46E5;color:#fff;padding:14px 32px;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none">Start a Project</a>
+      <a href="services.html" style="border:1.5px solid var(--accentB);color:var(--lilac);padding:13px 32px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none">Our Services</a>
+    </div>
     <div class="page-hero-meta reveal reveal-delay-3">
       <div class="meta-item"><span class="meta-num">9+</span><span class="meta-label">Projects Shown</span></div>
       <div class="meta-item"><span class="meta-num">3</span><span class="meta-label">Countries</span></div>
@@ -684,6 +762,38 @@ const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
   nav.style.padding = window.scrollY > 60 ? '13px 60px' : '20px 60px';
 }, { passive: true });
+
+// ── HAMBURGER ─────────────────────────
+var ham = document.getElementById('hamburger');
+var mob = document.getElementById('mobileMenu');
+if(ham && mob){
+  ham.addEventListener('click', function(){
+    var open = mob.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mob.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mob.classList.remove('open');
+      ham.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+// ── HIDE STICKY CTA ON SCROLL UP ──────
+var lastScroll = 0;
+var sticky = document.getElementById('mobSticky');
+window.addEventListener('scroll', function(){
+  if(!sticky) return;
+  var cur = window.scrollY;
+  if(cur < 200){ sticky.style.transform = 'translateY(0)'; }
+  else if(cur > lastScroll){ sticky.style.transform = 'translateY(120%)'; }
+  else { sticky.style.transform = 'translateY(0)'; }
+  lastScroll = cur;
+}, {passive:true});
+
 </script>
 </body>
 </html>

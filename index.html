@@ -228,9 +228,104 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   .global-div{display:none}
   .toggle-label{display:none}
 }
+
+/* ═══ HAMBURGER + MOBILE MENU (NN/g H6: Recognition not recall) ═══ */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.4s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);padding:100px 32px 120px;flex-direction:column;gap:0;overflow-y:auto;transition:background 0.4s}
+.mobile-menu.open{display:flex}
+.mobile-menu-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s,border-color 0.4s;display:block}
+.mobile-menu-link:hover,.mobile-menu-link.active{color:var(--accent)}
+.mobile-menu-cta{margin-top:28px;background:#4F46E5;color:#fff!important;padding:20px 32px;border-radius:4px;font-size:1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.25s;border-bottom:none!important}
+.mobile-menu-cta:hover{background:#4338CA!important}
+/* Sticky bottom CTA on mobile (NN/g H7: efficiency of use) */
+.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:12px 16px 16px;background:var(--bg);border-top:1px solid var(--border);transition:background 0.4s,border-color 0.4s}
+.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:16px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+/* Mobile hero stats strip */
+.hero-stats-mobile{display:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:28px;transition:background 0.4s,border-color 0.4s}
+.hsm-row{display:flex}
+.hsm-item{flex:1;padding:18px 10px;text-align:center;border-right:1px solid var(--border)}
+.hsm-item:last-child{border-right:none}
+.hsm-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--txt);line-height:1}
+.hsm-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.04em;margin-top:3px}
+
+/* ═══ RESPONSIVE ═══ */
+/* Tablet 960px */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .toggle-label{display:none}
+  section,#process{padding:72px 32px}
+  #home{padding:110px 32px 80px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr;gap:0}
+  .hero-visual{display:none}
+  .hero-stats-mobile{display:block}
+  .about-grid{grid-template-columns:1fr}
+  .about-image-wrap{display:none}
+  .services-header{grid-template-columns:1fr;gap:16px;margin-bottom:32px}
+  .services-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .portfolio-grid{grid-template-columns:1fr}
+  .portfolio-item:first-child{grid-row:auto}
+  .portfolio-item:first-child .portfolio-thumb{height:240px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .global-strip{padding:20px 32px}
+  .global-div{display:none}
+  footer{padding:48px 32px 32px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .mob-sticky{display:block}
+  body{padding-bottom:68px}
+}
+/* Large phone 640px */
+@media(max-width:640px){
+  section,#process{padding:56px 20px}
+  #home{padding:96px 20px 64px}
+  h1{font-size:2.2rem}
+  h2{font-size:1.7rem}
+  .services-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr}
+  .process-step{border-right:none;border-bottom:1px solid rgba(255,255,255,0.15)}
+  .process-step:last-child{border-bottom:none}
+  .portfolio-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .footer-top{grid-template-columns:1fr}
+  footer{padding:40px 20px 28px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions a{text-align:center}
+  .global-strip{padding:16px 20px}
+  .hero-eyebrow{font-size:0.72rem}
+  .btn-primary,.btn-outline{padding:14px 24px;font-size:0.82rem}
+  .nav-cta{display:none}
+}
+/* Small phone 380px */
+@media(max-width:380px){
+  h1{font-size:1.9rem}
+  h2{font-size:1.5rem}
+  .hsm-num{font-size:1.3rem}
+  .logo{font-size:1.3rem}
+}
+
 </style>
 </head>
 <body>
+
+<!-- MOBILE MENU (NN/g H6) -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <a class="mobile-menu-link" href="index.html">Home</a>
+  <a class="mobile-menu-link" href="about.html">About</a>
+  <a class="mobile-menu-link" href="services.html">Services</a>
+  <a class="mobile-menu-link" href="portfolio.html">Work</a>
+  <a class="mobile-menu-link" href="contact.html">Contact</a>
+  <a class="mobile-menu-cta" href="contact.html">Start a Project →</a>
+</div>
+<!-- MOBILE STICKY CTA (NN/g H7) -->
+<div class="mob-sticky" id="mobSticky">
+  <a href="contact.html">Start a Project →</a>
+</div>
 
 <nav id="main-nav">
   <a class="logo" href="index.html">DZiel <span>Creative</span></a>
@@ -240,6 +335,9 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
     <li><a href="portfolio.html">Work</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
@@ -261,6 +359,14 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
         <a class="btn-primary" href="portfolio.html">View Our Work</a>
         <a class="btn-outline" href="contact.html">Start a Project</a>
       </div>
+    <!-- Mobile stats strip (hidden on desktop, shown on mobile) -->
+    <div class="hero-stats-mobile">
+      <div class="hsm-row">
+        <div class="hsm-item"><div class="hsm-num">50+</div><div class="hsm-label">Projects</div></div>
+        <div class="hsm-item"><div class="hsm-num">8+</div><div class="hsm-label">Years Exp.</div></div>
+        <div class="hsm-item"><div class="hsm-num">3</div><div class="hsm-label">Countries</div></div>
+      </div>
+    </div>
     </div>
     <div class="hero-visual">
       <div class="hero-deco"></div>
@@ -423,7 +529,7 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
       <a href="contact.html" style="background:#fff;color:#4F46E5;padding:14px 36px;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#fff'">Start a Project →</a>
       <a href="about.html" style="border:2px solid rgba(255,255,255,0.45);color:#fff;padding:13px 36px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s" onmouseover="this.style.borderColor='#fff';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.45)';this.style.background='transparent'">Meet the Team</a>
     </div>
-    <p class="reveal reveal-delay-3" style="margin-top:28px;font-size:0.82rem;color:rgba(255,255,255,0.5)">✉️ hello@dzielcreative.com &nbsp;·&nbsp; 🕒 Mon–Fri, 9am–6pm GMT &nbsp;·&nbsp; ⚡ Reply within 24hrs</p>
+    <p class="reveal reveal-delay-3" style="margin-top:28px;font-size:0.82rem;color:rgba(255,255,255,0.5)">✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="355d5059595a75514f5c505956475054415c43501b565a58">[email&#160;protected]</a> &nbsp;·&nbsp; 🕒 Mon–Fri, 9am–6pm GMT &nbsp;·&nbsp; ⚡ Reply within 24hrs</p>
   </div>
 </div>
 
@@ -465,7 +571,7 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var html = document.documentElement;
   var saved = '';
@@ -502,11 +608,4 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
 
   // Nav shrink
   var nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', function(){
-    if(nav) nav.style.padding = window.scrollY > 60 ? '13px 60px' : '20px 60px';
-  },{passive:true});
-})();
-
-function handleSubmit(e){
-  e.preventDefault();
-  var btn = e.target.querySelecto
+  wi

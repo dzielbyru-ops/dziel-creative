@@ -132,9 +132,94 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   footer{padding:36px 24px 22px}.footer-top{grid-template-columns:1fr 1fr;gap:24px}
   .toggle-label{display:none}
 }
+
+/* ═══ HAMBURGER + MOBILE MENU (NN/g H6: Recognition not recall) ═══ */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.4s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);padding:100px 32px 120px;flex-direction:column;gap:0;overflow-y:auto;transition:background 0.4s}
+.mobile-menu.open{display:flex}
+.mobile-menu-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s,border-color 0.4s;display:block}
+.mobile-menu-link:hover,.mobile-menu-link.active{color:var(--accent)}
+.mobile-menu-cta{margin-top:28px;background:#4F46E5;color:#fff!important;padding:20px 32px;border-radius:4px;font-size:1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.25s;border-bottom:none!important}
+.mobile-menu-cta:hover{background:#4338CA!important}
+/* Sticky bottom CTA on mobile (NN/g H7: efficiency of use) */
+.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:12px 16px 16px;background:var(--bg);border-top:1px solid var(--border);transition:background 0.4s,border-color 0.4s}
+.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:16px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+/* Mobile hero stats strip */
+.hero-stats-mobile{display:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:28px;transition:background 0.4s,border-color 0.4s}
+.hsm-row{display:flex}
+.hsm-item{flex:1;padding:18px 10px;text-align:center;border-right:1px solid var(--border)}
+.hsm-item:last-child{border-right:none}
+.hsm-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--txt);line-height:1}
+.hsm-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.04em;margin-top:3px}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .toggle-label{display:none}
+  .page-hero{padding:130px 32px 60px}
+  .mob-sticky{display:block}
+  body{padding-bottom:68px}
+}
+@media(max-width:640px){
+  .page-hero{padding:110px 20px 48px}
+  h1{font-size:2rem}
+  h2{font-size:1.65rem}
+  .page-hero h1{font-size:2rem}
+  .hero-actions-page,.page-hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions-page a,.page-hero-actions a{text-align:center}
+  .btn-primary,.btn-outline{padding:14px 20px;font-size:0.82rem}
+}
+@media(max-width:380px){
+  h1{font-size:1.8rem}
+  h2{font-size:1.45rem}
+  .logo{font-size:1.3rem}
+}
+
+
+/* Services page specific */
+@media(max-width:960px){
+  .service-block,.service-block.reverse{grid-template-columns:1fr;gap:32px}
+  .service-block.reverse .service-block-visual{order:0}
+  .service-block-visual{aspect-ratio:3/2}
+  .service-block{padding:40px 0}
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-section{padding:60px 32px}
+  .services-section{padding:60px 32px}
+  .cta-strip{padding:60px 32px}
+}
+@media(max-width:640px){
+  .service-block-num{font-size:3rem}
+  .service-block h3{font-size:1.3rem}
+  .pricing-section,.services-section{padding:48px 20px}
+  .cta-strip{padding:48px 20px}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .cta-actions a{text-align:center}
+}
+
 </style>
 </head>
 <body>
+
+<!-- MOBILE MENU (NN/g H6) -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <a class="mobile-menu-link" href="index.html">Home</a>
+  <a class="mobile-menu-link" href="about.html">About</a>
+  <a class="mobile-menu-link" href="services.html">Services</a>
+  <a class="mobile-menu-link" href="portfolio.html">Work</a>
+  <a class="mobile-menu-link" href="contact.html">Contact</a>
+  <a class="mobile-menu-cta" href="contact.html">Start a Project →</a>
+</div>
+<!-- MOBILE STICKY CTA (NN/g H7) -->
+<div class="mob-sticky" id="mobSticky">
+  <a href="contact.html">Start a Project →</a>
+</div>
 
 <nav id="main-nav">
   <a class="logo" href="index.html">DZiel <span>Creative</span></a>
@@ -144,6 +229,9 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
     <li><a href="portfolio.html">Work</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
@@ -159,6 +247,10 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
     <div class="page-eyebrow reveal">What We Offer</div>
     <h1 class="reveal reveal-delay-1">Services built for <em>real results</em></h1>
     <p class="reveal reveal-delay-2">From your first wireframe to a fully launched product — we offer end-to-end design services tailored to your business, your users, and your goals. Every service is grounded in UX thinking and delivered with craft.</p>
+    <div class="hero-actions-page reveal reveal-delay-3" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+      <a href="contact.html" style="background:#4F46E5;color:#fff;padding:14px 32px;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none">Get a Free Quote</a>
+      <a href="portfolio.html" style="border:1.5px solid var(--accentB);color:var(--lilac);padding:13px 32px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none">View Our Work</a>
+    </div>
   </div>
 </div>
 
@@ -405,6 +497,38 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   var nav=document.getElementById('main-nav');
   window.addEventListener('scroll',function(){if(nav)nav.style.padding=window.scrollY>60?'13px 60px':'20px 60px';},{passive:true});
 })();
+
+// ── HAMBURGER ─────────────────────────
+var ham = document.getElementById('hamburger');
+var mob = document.getElementById('mobileMenu');
+if(ham && mob){
+  ham.addEventListener('click', function(){
+    var open = mob.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mob.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mob.classList.remove('open');
+      ham.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+// ── HIDE STICKY CTA ON SCROLL UP ──────
+var lastScroll = 0;
+var sticky = document.getElementById('mobSticky');
+window.addEventListener('scroll', function(){
+  if(!sticky) return;
+  var cur = window.scrollY;
+  if(cur < 200){ sticky.style.transform = 'translateY(0)'; }
+  else if(cur > lastScroll){ sticky.style.transform = 'translateY(120%)'; }
+  else { sticky.style.transform = 'translateY(0)'; }
+  lastScroll = cur;
+}, {passive:true});
+
 </script>
 </body>
 </html>
