@@ -305,6 +305,21 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
               <div class="contact-item-value">United Kingdom</div>
             </div>
           </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">
+                <!-- HONEYPOT: bots read this fake number in the HTML.
+                     Real number is never in the DOM — assembled by JS on click only. -->
+                <a id="phoneLink" href="#" onclick="revealPhone(event)" aria-label="Click to reveal phone number">
+                  <span id="phoneDisplay">+44 7000 000000</span>
+                </a>
+                <span id="phoneHint" style="display:block;font-size:0.7rem;color:var(--muted);margin-top:2px">Click to reveal &amp; call</span>
+              </div>
+            </div>
+          </div>
           <div class="contact-item">
             <div class="contact-item-icon">🕒</div>
             <div class="contact-item-text">
@@ -411,7 +426,7 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
           <div style="width:68px;height:68px;background:rgba(16,185,129,0.1);border:2px solid #10B981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:22px;flex-shrink:0">&#10003;</div>
           <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--txt);margin-bottom:10px;line-height:1.2">Message received — <em style="font-weight:800;color:#4F46E5">thank you!</em></h3>
           <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:340px;margin-bottom:8px">Ru will personally read your message and get back to you within <strong style="color:var(--txt)">24 hours</strong>.</p>
-          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:32px">Replies come from <strong style="color:var(--txt)">hello@dzielcreative.com</strong> — check your spam just in case.</p>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:32px">Replies come from <strong style="color:var(--txt)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c7d9cac6cfc0d1c6c2d7cad5c68dc0ccce">[email&#160;protected]</a></strong> — check your spam just in case.</p>
           <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:260px">
             <a href="portfolio.html" style="background:#4F46E5;color:#fff;padding:14px 24px;border-radius:3px;font-size:0.84rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:block;text-align:center">View Our Work</a>
             <a href="index.html" style="border:1.5px solid var(--border);color:var(--muted);padding:13px 24px;border-radius:3px;font-size:0.84rem;font-weight:600;text-decoration:none;display:block;text-align:center;transition:border-color 0.2s">Back to Home</a>
@@ -462,7 +477,33 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+/* ── PHONE REVEAL (honeypot protection) ─────────────────────────
+   Bots read the fake number "+44 7000 000000" from the HTML.
+   The real number is never written in the DOM — it is assembled
+   from three separate JS variables only when the user clicks.
+
+   TO SET YOUR REAL NUMBER:
+   Replace p1, p2, p3 below so they join to form your full number.
+   e.g. '+44 ' + '7911 ' + '123456'  →  +44 7911 123456
+   ──────────────────────────────────────────────────────────── */
+function revealPhone(e) {
+  e.preventDefault();
+  var p1 = '+44 ';        // ← change this
+  var p2 = '7XXX ';       // ← change this
+  var p3 = 'XXXXXX';      // ← change this
+  var real = p1 + p2 + p3;
+  var display = document.getElementById('phoneDisplay');
+  var hint    = document.getElementById('phoneHint');
+  var link    = document.getElementById('phoneLink');
+  if (display) display.textContent = real;
+  if (hint)    hint.style.display  = 'none';
+  if (link)    link.href           = 'tel:' + real.replace(/\s/g, '');
+  // Second click actually dials
+  link.onclick = null;
+}
+
+</script><script>
 (function() {
 
   /* ── 1. THEME ── */
@@ -646,7 +687,7 @@ function handleSubmit() {
   //   3. Copy the Form ID (e.g. xpwzjkqb)
   //   4. Replace YOUR_FORM_ID below with that ID
   //   Every submission will then arrive directly in your inbox.
-  var FORMSPREE_ID = 'xdalqodk'; // ← replace this
+  var FORMSPREE_ID = 'YOUR_FORM_ID'; // ← replace this
 
   if (FORMSPREE_ID === 'YOUR_FORM_ID') {
     // Demo mode — shows the thank-you without actually sending
@@ -682,11 +723,4 @@ function showThankYou() {
 }
 
 function showFormError(msg) {
-  var btn = document.getElementById('submitBtn');
-  if (btn) { btn.textContent = 'Send Message →'; btn.disabled = false; }
-  var errBox = document.getElementById('formError');
-  if (errBox) { errBox.textContent = msg; errBox.style.display = 'block'; }
-}
-</script>
-</body>
-</html>
+  var btn = document.getElementById('submitBtn'
