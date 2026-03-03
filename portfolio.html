@@ -112,7 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .page-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:var(--txt);margin-bottom:20px}
 .page-hero h1 em{font-style:normal;font-weight:800;color:#4F46E5}
 .page-hero p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:540px;margin-bottom:40px}
-.page-hero-meta{display:flex;gap:48px;flex-wrap:wrap}
+.page-hero-meta{display:flex;gap:48px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
 .meta-item{display:flex;flex-direction:column;gap:4px}
 .meta-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:var(--txt);line-height:1}
 .meta-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
@@ -402,9 +402,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
     <li><a href="portfolio.html" class="active">Work</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
@@ -412,6 +409,9 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
       <span class="toggle-label" id="toggleLabel">Light</span>
     </button>
     <a class="nav-cta" href="contact.html">Start a Project</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 

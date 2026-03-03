@@ -202,6 +202,16 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   .team-mini-photo{width:100%;min-height:120px}
 }
 
+
+.req-star{color:#EF4444;font-size:0.8rem;margin-left:2px}
+.opt-label{font-size:0.68rem;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;font-style:italic}
+.field-error{font-size:0.73rem;color:#EF4444;margin-top:4px;display:none;font-weight:500}
+.field-error.show{display:block}
+.field-hint{font-size:0.72rem;color:var(--muted);margin-top:4px}
+input.has-error,textarea.has-error,select.has-error{border-color:#EF4444 !important;box-shadow:0 0 0 3px rgba(239,68,68,0.1) !important}
+input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important}
+.form-submit:disabled{opacity:0.65;cursor:not-allowed;transform:none !important}
+
 </style>
 </head>
 <body>
@@ -228,9 +238,6 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
     <li><a href="portfolio.html">Work</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
@@ -238,6 +245,9 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
       <span class="toggle-label" id="toggleLabel">Light</span>
     </button>
     <a class="nav-cta" href="#form">Start a Project</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -321,34 +331,53 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
       </div>
 
       <!-- RIGHT: FORM -->
-      <div class="contact-form-wrap reveal reveal-delay-2" id="form">
-        <div class="contact-form" id="contactForm">
+         <div class="contact-form" id="contactForm">
           <div class="form-title">Start a Project</div>
-          <p class="form-subtitle">Tell us about yourself and your project — the more detail you share, the better we can help.</p>
+          <p class="form-subtitle">Fields marked <strong style="color:#EF4444">*</strong> are required.</p>
           <div class="form-divider"></div>
 
           <div class="form-row">
-            <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Jane" required/></div>
-            <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith" required/></div>
+            <div class="form-group">
+              <label for="fname">First Name <span class="req-star" aria-hidden="true">*</span></label>
+              <input type="text" id="fname" placeholder="Jane" autocomplete="given-name"/>
+              <span class="field-error" id="fname-err">Please enter your first name</span>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name <span class="req-star" aria-hidden="true">*</span></label>
+              <input type="text" id="lname" placeholder="Smith" autocomplete="family-name"/>
+              <span class="field-error" id="lname-err">Please enter your last name</span>
+            </div>
           </div>
-          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="jane@company.com" required/></div>
-          <div class="form-group"><label for="company">Company / Organisation</label><input type="text" id="company" placeholder="Your Company Ltd (optional)"/></div>
+
           <div class="form-group">
-            <label for="service">Service Interested In</label>
+            <label for="email">Email Address <span class="req-star" aria-hidden="true">*</span></label>
+            <input type="email" id="email" placeholder="jane@company.com" autocomplete="email"/>
+            <span class="field-error" id="email-err">Please enter a valid email address</span>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company / Organisation <span class="opt-label">Optional</span></label>
+            <input type="text" id="company" placeholder="Your Company Ltd" autocomplete="organization"/>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Interested In <span class="req-star" aria-hidden="true">*</span></label>
             <select id="service">
               <option value="">Select a service...</option>
-              <option>Website Design & Development</option>
-              <option>App Design</option>
-              <option>Branding & Graphics</option>
-              <option>UI/UX Evaluation</option>
-              <option>UX Consultation</option>
-              <option>Design Mentoring</option>
-              <option>Multiple Services</option>
-              <option>Not Sure Yet</option>
+              <option value="web">Website Design &amp; Development</option>
+              <option value="app">App Design</option>
+              <option value="brand">Branding &amp; Graphics</option>
+              <option value="ux-eval">UI/UX Evaluation</option>
+              <option value="ux-consult">UX Consultation</option>
+              <option value="mentoring">Design Mentoring</option>
+              <option value="multiple">Multiple Services</option>
+              <option value="unsure">Not Sure Yet</option>
             </select>
+            <span class="field-error" id="service-err">Please select a service</span>
           </div>
+
           <div class="form-group">
-            <label for="budget">Approximate Budget</label>
+            <label for="budget">Approximate Budget <span class="opt-label">Optional</span></label>
             <select id="budget">
               <option value="">Select a range...</option>
               <option>Under £500</option>
@@ -358,19 +387,29 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
               <option>£10,000+</option>
               <option>Not Sure Yet</option>
             </select>
+            <span class="field-hint">Helps us give you an accurate quote</span>
           </div>
-          <div class="form-group"><label for="msg">Tell Us About Your Project</label><textarea id="msg" placeholder="Describe your project, goals, challenges, or just say hello..." required></textarea></div>
-          <button class="form-submit" type="button" onclick="handleSubmit()">Send Message →</button>
-          <p class="form-note">We reply within 24 hours · No spam, ever · Your details are kept private</p>
+
+          <div class="form-group">
+            <label for="msg">Tell Us About Your Project <span class="req-star" aria-hidden="true">*</span></label>
+            <textarea id="msg" placeholder="Describe your project, goals, challenges, or just say hello..."></textarea>
+            <span class="field-error" id="msg-err">Please add a short message (at least 10 characters)</span>
+          </div>
+
+          <button class="form-submit" type="button" id="submitBtn" onclick="handleSubmit()">
+            Send Message →
+          </button>
+          <p class="form-note">We reply within 24 hours &nbsp;·&nbsp; No spam, ever &nbsp;·&nbsp; Your details stay private</p>
         </div>
 
-        <!-- Success state (hidden by default) -->
-        <div class="form-success" id="formSuccess" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;">
+        <!-- Success state -->
+        <div class="form-success" id="formSuccess" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:10px;">
           <div class="success-icon">✓</div>
           <h3>Message Sent!</h3>
           <p>Thanks for reaching out. Ru will review your message and get back to you within 24 hours.</p>
           <a href="index.html" style="color:var(--accent);font-size:0.86rem;font-weight:600;text-decoration:none;margin-top:8px">← Back to Home</a>
         </div>
+      </div>
       </div>
 
     </div>
@@ -414,34 +453,180 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function(){
-  var html=document.documentElement;
-  var saved='dark';try{saved=localStorage.getItem('dziel-theme')||'dark';}catch(e){}
-  applyTheme(saved);
-  document.getElementById('themeToggle').addEventListener('click',function(){
-    var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
-    applyTheme(next);try{localStorage.setItem('dziel-theme',next);}catch(e){}
-  });
-  function applyTheme(t){
-    html.setAttribute('data-theme',t);
-    var i=document.getElementById('toggleIcon'),l=document.getElementById('toggleLabel');
-    if(i)i.textContent=t==='light'?'🌙':'☀️';
-    if(l)l.textContent=t==='light'?'Dark':'Light';
+<script>
+(function() {
+
+  /* ── 1. THEME ── */
+  var H = document.documentElement;
+  var t = 'dark';
+  try { t = localStorage.getItem('dziel-theme') || 'dark'; } catch(e) {}
+  applyTheme(t);
+
+  var tog = document.getElementById('themeToggle');
+  if (tog) {
+    tog.addEventListener('click', function() {
+      var next = H.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('dziel-theme', next); } catch(e) {}
+    });
   }
-  document.documentElement.classList.add('js-ready');
-  var reveals=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08});
-    reveals.forEach(function(r){io.observe(r);});
-  }else{reveals.forEach(function(r){r.classList.add('visible');});}
-  var nav=document.getElementById('main-nav');
-  window.addEventListener('scroll',function(){if(nav)nav.style.padding=window.scrollY>60?'13px 60px':'20px 60px';},{passive:true});
+
+  function applyTheme(val) {
+    H.setAttribute('data-theme', val);
+    var icon = document.getElementById('toggleIcon');
+    var lbl  = document.getElementById('toggleLabel');
+    if (icon) icon.textContent = val === 'light' ? '🌙' : '☀️';
+    if (lbl)  lbl.textContent  = val === 'light' ? 'Dark' : 'Light';
+  }
+
+  /* ── 2. SCROLL REVEAL ── */
+  H.classList.add('js-ready');
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(r) { io.observe(r); });
+  } else {
+    reveals.forEach(function(r) { r.classList.add('visible'); });
+  }
+
+  /* ── 3. NAV SHRINK ── */
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    if (!nav) return;
+    var isWide = window.innerWidth > 960;
+    if (window.scrollY > 60) {
+      nav.style.padding = isWide ? '12px 60px' : '10px 24px';
+    } else {
+      nav.style.padding = isWide ? '20px 60px' : '14px 24px';
+    }
+  }, { passive: true });
+
+  /* ── 4. HAMBURGER ── */
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mobileMenu');
+  if (ham && mob) {
+    ham.addEventListener('click', function() {
+      var open = mob.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mob.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mob.classList.remove('open');
+        ham.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ── 5. MOBILE STICKY CTA ── */
+  var sticky = document.getElementById('mobSticky');
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    if (!sticky) return;
+    var cur = window.scrollY;
+    if (cur < 200) {
+      sticky.style.transform = 'translateY(0)';
+    } else if (cur > lastY) {
+      sticky.style.transform = 'translateY(110%)';
+    } else {
+      sticky.style.transform = 'translateY(0)';
+    }
+    lastY = cur;
+  }, { passive: true });
+
+  /* ── 6. LIVE FIELD VALIDATION (NN/g H5: Error prevention) ── */
+  function validateField(id, errId, checkFn) {
+    var el  = document.getElementById(id);
+    var err = document.getElementById(errId);
+    if (!el) return true;
+    var val = el.value.trim();
+    var ok  = checkFn(val);
+    el.classList.toggle('has-error', !ok);
+    el.classList.toggle('is-valid',  ok && val !== '');
+    if (err) err.classList.toggle('show', !ok);
+    return ok;
+  }
+
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  var rules = {
+    fname:   function(v) { return v.length >= 2; },
+    lname:   function(v) { return v.length >= 2; },
+    email:   isEmail,
+    service: function(v) { return v !== ''; },
+    msg:     function(v) { return v.length >= 10; }
+  };
+
+  Object.keys(rules).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    // Validate on blur
+    el.addEventListener('blur', function() {
+      validateField(id, id + '-err', rules[id]);
+    });
+    // Re-validate on input once an error has been shown (NN/g H1: system status)
+    el.addEventListener('input', function() {
+      if (el.classList.contains('has-error')) {
+        validateField(id, id + '-err', rules[id]);
+      }
+    });
+  });
+
 })();
 
-function handleSubmit(){
-  var fname=document.getElementById('fname').value.trim();
-  var email=document.getElementById('email').value.trim();
-  var msg=document.getElementById('msg').value.trim();
-  if(!fname||!email||!msg){alert('Please fill in the required fields.');return;}
-  var form=document.getElementById
+/* ── FORM SUBMIT (global, called by onclick) ── */
+function handleSubmit() {
+  var fields = ['fname','lname','email','service','msg'];
+  var rules = {
+    fname:   function(v) { return v.length >= 2; },
+    lname:   function(v) { return v.length >= 2; },
+    email:   function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); },
+    service: function(v) { return v !== ''; },
+    msg:     function(v) { return v.length >= 10; }
+  };
+
+  var allOk = true;
+  fields.forEach(function(id) {
+    var el  = document.getElementById(id);
+    var err = document.getElementById(id + '-err');
+    if (!el) return;
+    var val = el.value.trim();
+    var ok  = rules[id](val);
+    el.classList.toggle('has-error', !ok);
+    el.classList.toggle('is-valid',  ok && val !== '');
+    if (err) err.classList.toggle('show', !ok);
+    if (!ok) allOk = false;
+  });
+
+  if (!allOk) {
+    // Scroll to first error field (NN/g H1: visibility of status)
+    var firstErr = document.querySelector('.has-error');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Disable button and show loading
+  var btn = document.getElementById('submitBtn');
+  if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+
+  // Simulate submission (replace setTimeout with fetch() to Formspree/EmailJS)
+  setTimeout(function() {
+    var form    = document.getElementById('contactForm');
+    var success = document.getElementById('formSuccess');
+    if (form)    form.style.display    = 'none';
+    if (success) success.style.display = 'flex';
+    // Scroll to success message
+    var wrap = document.getElementById('form');
+    if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 1000);
+}
+</script>
+</body>
+</html>

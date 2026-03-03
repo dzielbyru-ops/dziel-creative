@@ -140,7 +140,7 @@ h2 em{font-style:normal;font-weight:800;color:#4F46E5}
 
 /* PORTFOLIO */
 #portfolio{background:var(--bg)}
-.portfolio-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px}
+.portfolio-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;padding-bottom:0}
 .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .portfolio-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s,background 0.4s,border-color 0.4s}
 .portfolio-item:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(79,70,229,0.2)}
@@ -207,27 +207,6 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
 .js-ready .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}.reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
 
-/* RESPONSIVE */
-@media(max-width:960px){
-  nav{padding:16px 24px}
-  .nav-links{display:none}
-  section,#process{padding:72px 24px}
-  #home{padding:110px 24px 72px}
-  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .hero-visual{display:none}
-  .services-grid{grid-template-columns:1fr}
-  .services-header{grid-template-columns:1fr}
-  .process-steps{grid-template-columns:1fr 1fr}
-  .portfolio-grid{grid-template-columns:1fr}
-  .portfolio-item:first-child{grid-row:auto}
-  .testimonials-grid{grid-template-columns:1fr}
-  footer{padding:40px 24px 24px}
-  .footer-top{grid-template-columns:1fr 1fr;gap:28px}
-  .form-row{grid-template-columns:1fr}
-  .global-strip{padding:20px 24px}
-  .global-div{display:none}
-  .toggle-label{display:none}
-}
 
 /* ═══ HAMBURGER + MOBILE MENU (NN/g H6: Recognition not recall) ═══ */
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px}
@@ -335,16 +314,16 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
     <li><a href="portfolio.html">Work</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
       <span class="toggle-icon" id="toggleIcon">☀️</span>
       <div class="toggle-track"><div class="toggle-knob"></div></div>
       <span class="toggle-label" id="toggleLabel">Light</span>
     </button>
     <a class="nav-cta" href="contact.html">Start a Project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -571,41 +550,94 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function(){
-  var html = document.documentElement;
-  var saved = '';
-  try { saved = localStorage.getItem('dziel-theme') || 'dark'; } catch(e){ saved = 'dark'; }
-  applyTheme(saved);
+<script>
+(function() {
+  /* ── 1. THEME ── */
+  var H = document.documentElement;
+  var t = 'dark';
+  try { t = localStorage.getItem('dziel-theme') || 'dark'; } catch(e) {}
+  applyTheme(t);
 
-  document.getElementById('themeToggle').addEventListener('click', function(){
-    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    try { localStorage.setItem('dziel-theme', next); } catch(e){}
-  });
+  var tog = document.getElementById('themeToggle');
+  if (tog) {
+    tog.addEventListener('click', function() {
+      var next = H.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('dziel-theme', next); } catch(e) {}
+    });
+  }
 
-  function applyTheme(t){
-    html.setAttribute('data-theme', t);
+  function applyTheme(val) {
+    H.setAttribute('data-theme', val);
     var icon = document.getElementById('toggleIcon');
     var lbl  = document.getElementById('toggleLabel');
-    if(icon) icon.textContent  = t === 'light' ? '🌙' : '☀️';
-    if(lbl)  lbl.textContent   = t === 'light' ? 'Dark' : 'Light';
+    if (icon) icon.textContent = val === 'light' ? '🌙' : '☀️';
+    if (lbl)  lbl.textContent  = val === 'light' ? 'Dark' : 'Light';
   }
 
-  // Scroll reveal
-  document.documentElement.classList.add('js-ready');
+  /* ── 2. SCROLL REVEAL ── */
+  H.classList.add('js-ready');
   var reveals = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    },{threshold:0.08});
-    reveals.forEach(function(r){ io.observe(r); });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(r) { io.observe(r); });
   } else {
-    reveals.forEach(function(r){ r.classList.add('visible'); });
+    reveals.forEach(function(r) { r.classList.add('visible'); });
   }
 
-  // Nav shrink
+  /* ── 3. NAV SHRINK ── */
   var nav = document.getElementById('main-nav');
-  wi
+  window.addEventListener('scroll', function() {
+    if (!nav) return;
+    var isWide = window.innerWidth > 960;
+    if (window.scrollY > 60) {
+      nav.style.padding = isWide ? '12px 60px' : '10px 24px';
+    } else {
+      nav.style.padding = isWide ? '20px 60px' : '14px 24px';
+    }
+  }, { passive: true });
+
+  /* ── 4. HAMBURGER ── */
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mobileMenu');
+  if (ham && mob) {
+    ham.addEventListener('click', function() {
+      var open = mob.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mob.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mob.classList.remove('open');
+        ham.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ── 5. STICKY CTA HIDE/SHOW ── */
+  var sticky = document.getElementById('mobSticky');
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    if (!sticky) return;
+    var cur = window.scrollY;
+    if (cur < 200) {
+      sticky.style.transform = 'translateY(0)';
+    } else if (cur > lastY) {
+      sticky.style.transform = 'translateY(110%)';
+    } else {
+      sticky.style.transform = 'translateY(0)';
+    }
+    lastY = cur;
+  }, { passive: true });
+
+})();
+</script>
+</body>
+</html>
