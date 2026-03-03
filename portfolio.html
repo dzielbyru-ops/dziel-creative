@@ -6,7 +6,7 @@
 <title>Portfolio — DZiel Creative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════════
    THEME TOKENS
@@ -87,7 +87,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);over
    NAV
 ═══════════════════════════════════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,var(--t)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;color:var(--txt);text-decoration:none;transition:color 0.3s}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;color:var(--txt);text-decoration:none;transition:color 0.3s}
 .logo span{color:#818CF8}
 .nav-right{display:flex;align-items:center;gap:24px}
 .nav-links{display:flex;gap:36px;list-style:none}
@@ -109,12 +109,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .page-hero-inner{max-width:1200px;margin:0 auto}
 .page-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);font-weight:500;margin-bottom:20px}
 .page-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
-.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:var(--txt);margin-bottom:20px}
-.page-hero h1 em{font-style:italic;color:#818CF8}
+.page-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:var(--txt);margin-bottom:20px}
+.page-hero h1 em{font-style:normal;font-weight:800;color:#4F46E5}
 .page-hero p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:540px;margin-bottom:40px}
 .page-hero-meta{display:flex;gap:48px;flex-wrap:wrap}
 .meta-item{display:flex;flex-direction:column;gap:4px}
-.meta-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;color:var(--txt);line-height:1}
+.meta-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:var(--txt);line-height:1}
 .meta-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
 
 /* ═══════════════════════════════════
@@ -223,7 +223,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
   color:var(--lilac);font-weight:500;margin-bottom:8px;transition:color 0.3s;
 }
 .project-info h3{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Plus Jakarta Sans',sans-serif;
   font-size:1.3rem;font-weight:400;color:var(--txt);
   margin-bottom:8px;line-height:1.2;transition:color 0.3s;
 }
@@ -263,11 +263,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
   padding:72px 60px;text-align:center;
 }
 .cta-strip h2{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'Plus Jakarta Sans',sans-serif;
   font-size:clamp(2rem,4vw,3rem);
   font-weight:300;color:#fff;margin-bottom:16px;
 }
-.cta-strip h2 em{font-style:italic;color:var(--lilac)}
+.cta-strip h2 em{font-style:normal;font-weight:800;color:#fff}
 .cta-strip p{font-size:1rem;color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto 36px;line-height:1.7}
 .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .btn-white{background:#fff;color:var(--accent);padding:14px 36px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
@@ -326,10 +326,10 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
 <nav id="main-nav">
   <a class="logo" href="index.html">DZiel <span>Creative</span></a>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#services">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
     <li><a href="portfolio.html" class="active">Work</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -337,7 +337,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
       <div class="toggle-track"><div class="toggle-knob"></div></div>
       <span class="toggle-label" id="toggleLabel">Light</span>
     </button>
-    <a class="nav-cta" href="index.html#contact">Start a Project</a>
+    <a class="nav-cta" href="contact.html">Start a Project</a>
   </div>
 </nav>
 
@@ -579,7 +579,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
   <h2>Ready to start your <em>next project?</em></h2>
   <p>Whether you have a clear brief or just an idea — we'd love to hear about it. Let's create something meaningful together.</p>
   <div class="cta-actions">
-    <a class="btn-white" href="index.html#contact">Start a Project</a>
+    <a class="btn-white" href="contact.html">Start a Project</a>
     <a class="btn-ghost" href="index.html">Back to Home</a>
   </div>
 </div>
@@ -592,21 +592,21 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
       <p>A UK-based design studio creating purposeful, user-centred digital experiences for clients in UK, USA & Australia.</p>
     </div>
     <div class="footer-col"><h5>Services</h5><ul>
-      <li><a href="index.html#services">Website Design</a></li>
-      <li><a href="index.html#services">App Design</a></li>
-      <li><a href="index.html#services">Branding & Graphics</a></li>
-      <li><a href="index.html#services">UX Evaluation</a></li>
-      <li><a href="index.html#services">UX Consultation</a></li>
-      <li><a href="index.html#services">Design Mentoring</a></li>
+      <li><a href="services.html">Website Design</a></li>
+      <li><a href="services.html">App Design</a></li>
+      <li><a href="services.html">Branding & Graphics</a></li>
+      <li><a href="services.html">UX Evaluation</a></li>
+      <li><a href="services.html">UX Consultation</a></li>
+      <li><a href="services.html">Design Mentoring</a></li>
     </ul></div>
     <div class="footer-col"><h5>Studio</h5><ul>
-      <li><a href="index.html#about">About Us</a></li>
-      <li><a href="index.html#process">Our Process</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="about.html#process">Our Process</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="index.html#testimonials">Testimonials</a></li>
     </ul></div>
     <div class="footer-col"><h5>Connect</h5><ul>
-      <li><a href="index.html#contact">Start a Project</a></li>
+      <li><a href="contact.html">Start a Project</a></li>
       <li><a href="#">LinkedIn</a></li>
       <li><a href="#">Behance</a></li>
       <li><a href="#">Dribbble</a></li>

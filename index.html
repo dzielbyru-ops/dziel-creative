@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);font-weight:600;margin-bottom:28px}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent)}
 h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:var(--txt);margin-bottom:28px;transition:color 0.4s}
-h1 em{font-style:normal;font-weight:800;color:#818CF8}
+h1 em{font-style:normal;font-weight:800;color:#6366F1}
 .hero-desc{font-size:1.04rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:44px}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s;display:inline-block}
@@ -88,7 +88,7 @@ section{padding:100px 60px;transition:background 0.4s}
 .section-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lilac);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .section-label::before{content:'';width:20px;height:1px;background:var(--accent)}
 h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:var(--txt);margin-bottom:20px;transition:color 0.4s}
-h2 em{font-style:normal;font-weight:800;color:#818CF8}
+h2 em{font-style:normal;font-weight:800;color:#4F46E5}
 
 /* ABOUT */
 #about{background:var(--bg)}
@@ -413,37 +413,19 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   </div>
 </section>
 
-<!-- CONTACT SNIPPET -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="section-label reveal">Get In Touch</div>
-        <h2 class="reveal reveal-delay-1">Let's create something <em>meaningful</em></h2>
-        <p class="contact-tagline reveal reveal-delay-2">Whether you have a clear brief or just an idea — we'd love to hear about it. We'll get back to you within 24 hours.</p>
-        <div class="contact-details reveal reveal-delay-3">
-          <div class="contact-item"><div class="contact-item-icon">📍</div>Based in UK · Clients in UK, USA & Australia</div>
-          <div class="contact-item"><div class="contact-item-icon">✉️</div>hello@dzielcreative.com</div>
-          <div class="contact-item"><div class="contact-item-icon">🕒</div>Mon–Fri, 9:00am–6:00pm GMT</div>
-        </div>
-        <br>
-        <a class="btn-outline" href="contact.html">Full Contact Page →</a>
-      </div>
-      <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane" required/></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" required/></div>
-        </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@company.com" required/></div>
-        <div class="form-group"><label>Service Interested In</label>
-          <select><option value="">Select a service...</option><option>Website Design & Development</option><option>App Design</option><option>Branding & Graphics</option><option>UI/UX Evaluation</option><option>UX Consultation</option><option>Design Mentoring</option><option>Not Sure Yet</option></select>
-        </div>
-        <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Describe your project, goals, or questions..." required></textarea></div>
-        <button class="form-submit" type="submit">Send Message →</button>
-      </form>
+<!-- CTA STRIP -->
+<div id="contact" style="background:#4F46E5;padding:90px 60px;text-align:center">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:#C7D2FE;font-weight:600;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:10px"><span style="display:inline-block;width:20px;height:1px;background:#C7D2FE"></span>Get In Touch<span style="display:inline-block;width:20px;height:1px;background:#C7D2FE"></span></div>
+    <h2 class="reveal" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:#fff;margin-bottom:16px">Let's create something <span style="font-weight:800;opacity:0.85">meaningful</span></h2>
+    <p class="reveal reveal-delay-1" style="font-size:1rem;color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:36px">Whether you have a fully scoped brief or just a spark of an idea — we'd love to hear from you. Reach out and we'll get back to you within 24 hours.</p>
+    <div class="reveal reveal-delay-2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" style="background:#fff;color:#4F46E5;padding:14px 36px;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#fff'">Start a Project →</a>
+      <a href="about.html" style="border:2px solid rgba(255,255,255,0.45);color:#fff;padding:13px 36px;border-radius:3px;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s" onmouseover="this.style.borderColor='#fff';this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.45)';this.style.background='transparent'">Meet the Team</a>
     </div>
+    <p class="reveal reveal-delay-3" style="margin-top:28px;font-size:0.82rem;color:rgba(255,255,255,0.5)">✉️ hello@dzielcreative.com &nbsp;·&nbsp; 🕒 Mon–Fri, 9am–6pm GMT &nbsp;·&nbsp; ⚡ Reply within 24hrs</p>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -483,7 +465,7 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var html = document.documentElement;
   var saved = '';
@@ -527,11 +509,4 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
 
 function handleSubmit(e){
   e.preventDefault();
-  var btn = e.target.querySelector('.form-submit');
-  btn.textContent = 'Sent! ✓';
-  btn.style.background = '#059669';
-  setTimeout(function(){ btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
-}
-</script>
-</body>
-</html>
+  var btn = e.target.querySelecto
