@@ -403,11 +403,20 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
         </div>
 
         <!-- Success state -->
-        <div class="form-success" id="formSuccess" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:10px;">
-          <div class="success-icon">✓</div>
-          <h3>Message Sent!</h3>
-          <p>Thanks for reaching out. Ru will review your message and get back to you within 24 hours.</p>
-          <a href="index.html" style="color:var(--accent);font-size:0.86rem;font-weight:600;text-decoration:none;margin-top:8px">← Back to Home</a>
+        <!-- ERROR BANNER (shown if Formspree returns an error) -->
+        <div id="formError" style="display:none;background:rgba(239,68,68,0.08);border:1.5px solid rgba(239,68,68,0.3);border-radius:6px;padding:14px 16px;font-size:0.88rem;color:#EF4444;font-weight:500;margin-bottom:8px"></div>
+
+        <!-- THANK-YOU STATE ── shown after successful submission ── -->
+        <div id="formSuccess" style="display:none;flex-direction:column;align-items:center;text-align:center;padding:52px 32px;background:var(--surface);border:1px solid var(--border);border-radius:10px">
+          <div style="width:68px;height:68px;background:rgba(16,185,129,0.1);border:2px solid #10B981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:22px;flex-shrink:0">&#10003;</div>
+          <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--txt);margin-bottom:10px;line-height:1.2">Message received — <em style="font-weight:800;color:#4F46E5">thank you!</em></h3>
+          <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:340px;margin-bottom:8px">Ru will personally read your message and get back to you within <strong style="color:var(--txt)">24 hours</strong>.</p>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:32px">Replies come from <strong style="color:var(--txt)">hello@dzielcreative.com</strong> — check your spam just in case.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:260px">
+            <a href="portfolio.html" style="background:#4F46E5;color:#fff;padding:14px 24px;border-radius:3px;font-size:0.84rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:block;text-align:center">View Our Work</a>
+            <a href="index.html" style="border:1.5px solid var(--border);color:var(--muted);padding:13px 24px;border-radius:3px;font-size:0.84rem;font-weight:600;text-decoration:none;display:block;text-align:center;transition:border-color 0.2s">Back to Home</a>
+          </div>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:24px;opacity:0.75">While you wait — read Ru&#8217;s latest <a href="https://medium.com/@ruwanthisulanjali" target="_blank" rel="noopener" style="color:var(--lilac);text-decoration:none;font-weight:600">case studies on Medium &#8594;</a></p>
         </div>
       </div>
       </div>
@@ -612,20 +621,71 @@ function handleSubmit() {
     return;
   }
 
-  // Disable button and show loading
+  // Show loading state
   var btn = document.getElementById('submitBtn');
   if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+  var errBox = document.getElementById('formError');
+  if (errBox) errBox.style.display = 'none';
 
-  // Simulate submission (replace setTimeout with fetch() to Formspree/EmailJS)
-  setTimeout(function() {
-    var form    = document.getElementById('contactForm');
-    var success = document.getElementById('formSuccess');
-    if (form)    form.style.display    = 'none';
-    if (success) success.style.display = 'flex';
-    // Scroll to success message
-    var wrap = document.getElementById('form');
-    if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 1000);
+  // ── COLLECT FORM DATA ─────────────────────────────────────────
+  var payload = {
+    firstName: document.getElementById('fname').value.trim(),
+    lastName:  document.getElementById('lname').value.trim(),
+    email:     document.getElementById('email').value.trim(),
+    company:   document.getElementById('company') ? document.getElementById('company').value.trim() : '',
+    service:   document.getElementById('service').value,
+    budget:    document.getElementById('budget') ? document.getElementById('budget').value : '',
+    message:   document.getElementById('msg').value.trim(),
+    _subject:  'New enquiry from ' + document.getElementById('fname').value.trim() + ' — DZiel Creative'
+  };
+
+  // ── FORMSPREE DELIVERY ────────────────────────────────────────
+  // SETUP (one-time, 2 minutes):
+  //   1. Go to https://formspree.io  →  sign up free
+  //   2. Click “New Form”  →  name it “DZiel Contact”
+  //   3. Copy the Form ID (e.g. xpwzjkqb)
+  //   4. Replace YOUR_FORM_ID below with that ID
+  //   Every submission will then arrive directly in your inbox.
+  var FORMSPREE_ID = 'YOUR_FORM_ID'; // ← replace this
+
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    // Demo mode — shows the thank-you without actually sending
+    setTimeout(showThankYou, 900);
+    return;
+  }
+
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+  .then(function(r) {
+    if (r.ok) {
+      showThankYou();
+    } else {
+      showFormError(r.data.error || 'Something went wrong. Please try again or email us directly.');
+    }
+  })
+  .catch(function() {
+    showFormError('Network error. Please check your connection and try again.');
+  });
+}
+
+function showThankYou() {
+  var form    = document.getElementById('contactForm');
+  var success = document.getElementById('formSuccess');
+  if (form)    form.style.display    = 'none';
+  if (success) success.style.display = 'flex';
+  var wrap = document.getElementById('form');
+  if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showFormError(msg) {
+  var btn = document.getElementById('submitBtn');
+  if (btn) { btn.textContent = 'Send Message →'; btn.disabled = false; }
+  var errBox = document.getElementById('formError');
+  if (errBox) { errBox.textContent = msg; errBox.style.display = 'block'; }
 }
 </script>
 </body>
