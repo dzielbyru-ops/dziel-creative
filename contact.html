@@ -212,6 +212,27 @@ input.has-error,textarea.has-error,select.has-error{border-color:#EF4444 !import
 input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important}
 .form-submit:disabled{opacity:0.65;cursor:not-allowed;transform:none !important}
 
+.form-checkbox{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--surface);border:1.5px solid var(--border);border-radius:6px;cursor:pointer;transition:border-color 0.2s,background 0.4s;margin-bottom:4px}
+.form-checkbox:hover{border-color:var(--accentB)}
+.form-checkbox input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:#4F46E5;cursor:pointer}
+.form-checkbox label{font-size:0.86rem;color:var(--muted);line-height:1.5;cursor:pointer}
+.form-checkbox label strong{color:var(--txt)}
+
+/* ── COOKIE BANNER ── */
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:9999;width:calc(100% - 48px);max-width:680px;background:#1E293B;border:1px solid #334155;border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 20px 60px rgba(0,0,0,0.5);transition:transform 0.45s cubic-bezier(0.34,1.2,0.64,1),opacity 0.35s;opacity:0;pointer-events:none}
+[data-theme="light"] .cookie-banner{background:#FFFFFF;border-color:#E2E8F0;box-shadow:0 12px 40px rgba(0,0,0,0.12)}
+.cookie-banner.cb-visible{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all}
+.cb-text{flex:1;min-width:220px}.cb-text p{font-family:'DM Sans',sans-serif;font-size:0.84rem;color:#94A3B8;margin:0;line-height:1.6}
+[data-theme="light"] .cb-text p{color:#64748B}.cb-text a{color:#818CF8;text-decoration:none}
+.cb-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;color:#FFFFFF;margin-bottom:4px;display:block}
+[data-theme="light"] .cb-title{color:#0F172A}
+.cb-actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.cb-accept{background:#4F46E5;color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:0.82rem;font-weight:700;cursor:pointer;transition:background 0.2s;white-space:nowrap;min-height:40px}
+.cb-accept:hover{background:#4338CA}
+.cb-decline{background:transparent;color:#94A3B8;border:1.5px solid #334155;padding:9px 18px;border-radius:4px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:border-color 0.2s,color 0.2s;white-space:nowrap;min-height:40px}
+[data-theme="light"] .cb-decline{border-color:#CBD5E1;color:#64748B}
+.cb-decline:hover{border-color:#4F46E5;color:#C7D2FE}
+@media(max-width:540px){.cookie-banner{bottom:80px;padding:16px}.cb-actions{width:100%}.cb-accept,.cb-decline{flex:1;text-align:center}}
 </style>
 </head>
 <body>
@@ -295,7 +316,7 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
             <div class="contact-item-icon">✉️</div>
             <div class="contact-item-text">
               <div class="contact-item-label">Email</div>
-              <div class="contact-item-value"><a id="emailLink" href="#">hello<!-- -->@<!-- -->dzielcreative.com</a></div>
+              <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#09616c656566496d73606c656a7b6c687d607f6c276a6664"><span class="__cf_email__" data-cfemail="e088858c8c8fa0849a89858c8392858194899685ce838f8d">[email&#160;protected]</span></a></div>
             </div>
           </div>
           <div class="contact-item">
@@ -396,6 +417,15 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
             <span class="field-error" id="msg-err">Please add a short message (at least 10 characters)</span>
           </div>
 
+          <!-- MARKETING OPT-IN -->
+          <div class="form-checkbox">
+            <input type="checkbox" id="marketingOptIn" name="marketingOptIn"/>
+            <label for="marketingOptIn">
+              <strong>Keep me in the loop</strong><br>
+              I'd like to receive occasional emails from DZiel Creative — new case studies, design insights, and studio updates. No spam, unsubscribe any time.
+            </label>
+          </div>
+
           <button class="form-submit" type="button" id="submitBtn" onclick="handleSubmit()">
             Send Message →
           </button>
@@ -445,6 +475,10 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
   </div>
   <div class="footer-bottom">
     <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
+    <div class="footer-legal" style="display:flex;gap:16px">
+      <a href="privacy-policy.html" style="font-size:0.73rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s">Privacy Policy</a>
+      <a href="cookie-policy.html" style="font-size:0.73rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s">Cookie Policy</a>
+    </div>
     <div class="footer-socials">
       <a class="social-link" href="#" title="LinkedIn">in</a>
       <a class="social-link" href="#" title="Behance">Be</a>
@@ -627,21 +661,18 @@ function handleSubmit() {
     if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 1000);
 }
-
-  /* ── EMAIL LINK FIX ──────────────────────────────────────────────────────
-     Cloudflare scrambles any plain email address found in HTML.
-     We assemble the mailto: href in JS so it never exists as a static string.
-  ────────────────────────────────────────────────────────────────────────── */
-  (function() {
-    var u = 'hello';
-    var d = 'dzielcreative' + '.com';
-    var links = document.querySelectorAll('#emailLink, .email-link');
-    links.forEach(function(el) {
-      el.href = 'mailto:' + u + '@' + d;
-      el.textContent = u + '@' + d;
-    });
-  })();
-
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+  <div class="cb-text">
+    <span class="cb-title">🍪 This site uses cookies</span>
+    <p>We use essential cookies to make this site work, and optional analytics cookies to understand how visitors use it. Read our <a href="cookie-policy.html">Cookie Policy</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+  <div class="cb-actions">
+    <button class="cb-decline" onclick="cookieDecline()">Essential only</button>
+    <button class="cb-accept" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
 </body>
 </html>

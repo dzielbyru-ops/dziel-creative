@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cookie Banner + Form Opt-in — DZiel Creative Snippet</title>
+<style>
+/* ── PREVIEW ONLY ─────────────────────────────────────────────── */
+body{font-family:system-ui,sans-serif;background:#0F172A;color:#fff;padding:40px;line-height:1.6}
+h1{color:#818CF8;margin-bottom:8px;font-size:1.4rem}
+p{color:#94A3B8;margin-bottom:24px;font-size:0.9rem}
+pre{background:#1E293B;border:1px solid #334155;border-radius:8px;padding:20px;overflow-x:auto;font-size:0.78rem;line-height:1.6;color:#C7D2FE;margin-bottom:32px;white-space:pre-wrap}
+
+/* ── COOKIE BANNER CSS ──────────────────────────────────────────── */
+/* Copy everything below this line into your <style> block */
+
+.cookie-banner{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);
+  z-index:9999;width:calc(100% - 48px);max-width:680px;
+  background:#1E293B;border:1px solid #334155;border-radius:10px;
+  padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  transition:transform 0.45s cubic-bezier(0.34,1.2,0.64,1),opacity 0.35s;
+  opacity:0;pointer-events:none;
+}
+[data-theme="light"] .cookie-banner{
+  background:#FFFFFF;border-color:#E2E8F0;box-shadow:0 12px 40px rgba(0,0,0,0.12);
+}
+.cookie-banner.cb-visible{
+  transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all;
+}
+.cb-text{flex:1;min-width:220px}
+.cb-text p{
+  font-family:'DM Sans',sans-serif;font-size:0.84rem;color:#94A3B8;margin:0;line-height:1.6;
+}
+[data-theme="light"] .cb-text p{color:#64748B}
+.cb-text a{color:#818CF8;text-decoration:none}
+.cb-text a:hover{text-decoration:underline}
+.cb-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;
+  color:#FFFFFF;margin-bottom:4px;display:block;
+}
+[data-theme="light"] .cb-title{color:#0F172A}
+.cb-actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.cb-accept{
+  background:#4F46E5;color:#fff;border:none;
+  padding:10px 20px;border-radius:4px;
+  font-size:0.82rem;font-weight:700;letter-spacing:0.04em;
+  cursor:pointer;transition:background 0.2s;white-space:nowrap;min-height:40px;
+}
+.cb-accept:hover{background:#4338CA}
+.cb-decline{
+  background:transparent;color:#94A3B8;
+  border:1.5px solid #334155;
+  padding:9px 18px;border-radius:4px;
+  font-size:0.82rem;font-weight:600;
+  cursor:pointer;transition:border-color 0.2s,color 0.2s;white-space:nowrap;min-height:40px;
+}
+[data-theme="light"] .cb-decline{border-color:#CBD5E1;color:#64748B}
+.cb-decline:hover{border-color:#4F46E5;color:#C7D2FE}
+@media(max-width:540px){
+  .cookie-banner{bottom:80px;padding:16px;} /* above mobile sticky CTA */
+  .cb-actions{width:100%}
+  .cb-accept,.cb-decline{flex:1;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<h1>📋 DZiel Creative — Copy-Paste Snippets</h1>
+<p>Three things to add across your site. Instructions are in the comments inside each snippet.</p>
+
+<h2 style="color:#C7D2FE;font-size:1rem;margin-bottom:8px;margin-top:32px">① Cookie Banner — add to EVERY page (index, about, services, portfolio, contact, project pages)</h2>
+<p>Paste the CSS into your &lt;style&gt; block, paste the HTML just before &lt;/body&gt;, paste the JS into your existing &lt;script&gt; block.</p>
+
+<pre>
+&lt;!-- ════════════════════════════════════════════════════════
+     STEP 1 OF 3 — COOKIE BANNER CSS
+     Paste into your &lt;style&gt; block on EVERY page
+════════════════════════════════════════════════════════ --&gt;
+
+.cookie-banner{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);
+  z-index:9999;width:calc(100% - 48px);max-width:680px;
+  background:#1E293B;border:1px solid #334155;border-radius:10px;
+  padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  transition:transform 0.45s cubic-bezier(0.34,1.2,0.64,1),opacity 0.35s;
+  opacity:0;pointer-events:none;
+}
+[data-theme="light"] .cookie-banner{
+  background:#FFFFFF;border-color:#E2E8F0;box-shadow:0 12px 40px rgba(0,0,0,0.12);
+}
+.cookie-banner.cb-visible{
+  transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all;
+}
+.cb-text{flex:1;min-width:220px}
+.cb-text p{font-family:'DM Sans',sans-serif;font-size:0.84rem;color:#94A3B8;margin:0;line-height:1.6}
+[data-theme="light"] .cb-text p{color:#64748B}
+.cb-text a{color:#818CF8;text-decoration:none}
+.cb-text a:hover{text-decoration:underline}
+.cb-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;color:#FFFFFF;margin-bottom:4px;display:block}
+[data-theme="light"] .cb-title{color:#0F172A}
+.cb-actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.cb-accept{background:#4F46E5;color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:0.82rem;font-weight:700;letter-spacing:0.04em;cursor:pointer;transition:background 0.2s;white-space:nowrap;min-height:40px}
+.cb-accept:hover{background:#4338CA}
+.cb-decline{background:transparent;color:#94A3B8;border:1.5px solid #334155;padding:9px 18px;border-radius:4px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:border-color 0.2s,color 0.2s;white-space:nowrap;min-height:40px}
+[data-theme="light"] .cb-decline{border-color:#CBD5E1;color:#64748B}
+.cb-decline:hover{border-color:#4F46E5;color:#C7D2FE}
+@media(max-width:540px){
+  .cookie-banner{bottom:80px;padding:16px}
+  .cb-actions{width:100%}
+  .cb-accept,.cb-decline{flex:1;text-align:center}
+}
+
+
+&lt;!-- ════════════════════════════════════════════════════════
+     STEP 2 OF 3 — COOKIE BANNER HTML
+     Paste just before &lt;/body&gt; on EVERY page
+════════════════════════════════════════════════════════ --&gt;
+
+&lt;div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent"&gt;
+  &lt;div class="cb-text"&gt;
+    &lt;span class="cb-title"&gt;🍪 This site uses cookies&lt;/span&gt;
+    &lt;p&gt;We use essential cookies to make this site work, and optional analytics cookies to understand how you use it. Read our &lt;a href="cookie-policy.html"&gt;Cookie Policy&lt;/a&gt; and &lt;a href="privacy-policy.html"&gt;Privacy Policy&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="cb-actions"&gt;
+    &lt;button class="cb-decline" onclick="cookieDecline()"&gt;Essential only&lt;/button&gt;
+    &lt;button class="cb-accept" onclick="cookieAccept()"&gt;Accept all&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!-- ════════════════════════════════════════════════════════
+     STEP 3 OF 3 — COOKIE BANNER JS
+     Paste inside your existing &lt;script&gt; block on EVERY page
+     (just before the closing })(); of your IIFE, or after it)
+════════════════════════════════════════════════════════ --&gt;
+
+/* ── COOKIE CONSENT ── */
+(function initCookieBanner() {
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  var consent = null;
+  try { consent = localStorage.getItem('dziel-cookie-consent'); } catch(e) {}
+  // Show banner if no decision has been made yet
+  if (!consent) {
+    setTimeout(function() { banner.classList.add('cb-visible'); }, 1200);
+  }
+  // If analytics were previously accepted, load GA
+  if (consent === 'accepted') { loadAnalytics(); }
+})();
+
+function cookieAccept() {
+  try { localStorage.setItem('dziel-cookie-consent', 'accepted'); } catch(e) {}
+  document.getElementById('cookieBanner').classList.remove('cb-visible');
+  loadAnalytics();
+}
+function cookieDecline() {
+  try { localStorage.setItem('dziel-cookie-consent', 'declined'); } catch(e) {}
+  document.getElementById('cookieBanner').classList.remove('cb-visible');
+}
+function loadAnalytics() {
+  /* ── HOW TO ADD GOOGLE ANALYTICS ──────────────────────────────
+     1. Go to analytics.google.com → create a property for dzielcreative.com
+     2. Copy your Measurement ID (looks like: G-XXXXXXXXXX)
+     3. Replace G-XXXXXXXXXX below with your real ID
+     4. Analytics will ONLY load after user accepts cookies ✓
+  ────────────────────────────────────────────────────────────── */
+  var GA_ID = 'G-XXXXXXXXXX'; // ← replace with your real GA4 ID
+  if (GA_ID === 'G-XXXXXXXXXX') return; // skip until ID is set
+  if (document.getElementById('ga-script')) return; // don't load twice
+  var s = document.createElement('script');
+  s.id = 'ga-script';
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+}
+</pre>
+
+<h2 style="color:#C7D2FE;font-size:1rem;margin-bottom:8px;margin-top:16px">② Marketing opt-in checkbox — contact.html only</h2>
+<p>Add this between the message textarea and the submit button in contact.html.</p>
+
+<pre>
+&lt;!-- ════════════════════════════════════════════════════════
+     MARKETING OPT-IN CHECKBOX — contact.html only
+     Paste between the message &lt;/div&gt; and the submit button
+════════════════════════════════════════════════════════ --&gt;
+
+&lt;!-- CSS: add to your &lt;style&gt; block --&gt;
+.form-checkbox{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--surface);border:1.5px solid var(--border);border-radius:6px;cursor:pointer;transition:border-color 0.2s,background 0.4s;margin-bottom:4px}
+.form-checkbox:hover{border-color:var(--accentB)}
+.form-checkbox input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:#4F46E5;cursor:pointer}
+.form-checkbox label{font-size:0.86rem;color:var(--muted);line-height:1.5;cursor:pointer}
+.form-checkbox label strong{color:var(--txt)}
+
+&lt;!-- HTML: the checkbox itself --&gt;
+&lt;div class="form-checkbox"&gt;
+  &lt;input type="checkbox" id="marketingOptIn" name="marketingOptIn"/&gt;
+  &lt;label for="marketingOptIn"&gt;
+    &lt;strong&gt;Keep me in the loop&lt;/strong&gt;&lt;br&gt;
+    I'd like to receive occasional emails from DZiel Creative — including new case studies, design insights, and studio updates. No spam, unsubscribe any time.
+  &lt;/label&gt;
+&lt;/div&gt;
+
+
+&lt;!-- JS: add this line inside your handleSubmit() function,
+     in the section where you build the payload object --&gt;
+marketingOptIn: document.getElementById('marketingOptIn') ? document.getElementById('marketingOptIn').checked : false,
+</pre>
+
+<h2 style="color:#C7D2FE;font-size:1rem;margin-bottom:8px;margin-top:16px">③ Footer privacy links — all pages</h2>
+<p>Add these two links to the footer-bottom div and add a Legal column to the footer-top grid on every page.</p>
+
+<pre>
+&lt;!-- In .footer-bottom, after the copyright span: --&gt;
+&lt;div class="footer-legal"&gt;
+  &lt;a href="privacy-policy.html"&gt;Privacy Policy&lt;/a&gt;
+  &lt;a href="cookie-policy.html"&gt;Cookie Policy&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS to add to your &lt;style&gt; block: --&gt;
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:0.73rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s}
+.footer-legal a:hover{color:#818CF8}
+</pre>
+
+<script>
+// Live preview of the banner below
+document.addEventListener('DOMContentLoaded', function() {
+  // inject a live preview banner
+  var preview = document.createElement('div');
+  preview.innerHTML = '<div id="cookieBanner" class="cookie-banner cb-visible" role="dialog" style="bottom:24px"><div class="cb-text"><span class="cb-title">🍪 This site uses cookies</span><p>We use essential cookies to make this site work, and optional analytics cookies to understand how you use it. Read our <a href="cookie-policy.html">Cookie Policy</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p></div><div class="cb-actions"><button class="cb-decline">Essential only</button><button class="cb-accept">Accept all</button></div></div>';
+  document.body.appendChild(preview.firstChild);
+});
+</script>
+</body>
+</html>

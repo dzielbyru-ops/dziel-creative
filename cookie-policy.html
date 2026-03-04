@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cookie Policy — DZiel Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--t:background 0.4s,color 0.4s,border-color 0.4s}
+[data-theme="dark"]{--bg:#0F172A;--bg2:#0B1120;--surface:#1E293B;--txt:#FFFFFF;--muted:#94A3B8;--accent:#4F46E5;--accentH:#4338CA;--accentS:rgba(79,70,229,0.18);--accentB:rgba(79,70,229,0.35);--lilac:#C7D2FE;--border:#1E293B;--borderM:#334155;--navBg:rgba(15,23,42,0.95);--ftrBg:#060D1A;--tkBg:#1E293B;--tkBdr:#334155}
+[data-theme="light"]{--bg:#F8FAFC;--bg2:#F1F5F9;--surface:#FFFFFF;--txt:#0F172A;--muted:#64748B;--accent:#4F46E5;--accentH:#4338CA;--accentS:rgba(79,70,229,0.08);--accentB:rgba(79,70,229,0.2);--lilac:#4338CA;--border:#E2E8F0;--borderM:#CBD5E1;--navBg:rgba(248,250,252,0.97);--ftrBg:#0F172A;--tkBg:#E5E7EB;--tkBdr:#D1D5DB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;transition:var(--t);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s,border-color 0.4s}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:-0.02em;color:var(--txt);text-decoration:none;flex-shrink:0}.logo span{color:#818CF8}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:0.83rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
+.nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-cta{background:var(--accent);color:#fff;padding:10px 20px;border-radius:3px;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s;white-space:nowrap}
+.nav-cta:hover{background:var(--accentH)}
+.theme-toggle{display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none;background:none;border:none;padding:6px;min-height:44px}
+.toggle-track{width:46px;height:25px;background:var(--tkBg);border:1.5px solid var(--tkBdr);border-radius:99px;position:relative;flex-shrink:0;transition:background 0.35s,border-color 0.35s}
+.toggle-knob{position:absolute;top:3px;left:3px;width:17px;height:17px;background:var(--accent);border-radius:50%;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1)}
+[data-theme="light"] .toggle-knob{transform:translateX(21px)}
+.toggle-icon{font-size:0.85rem}.toggle-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.4s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:990;background:var(--bg);padding:88px 32px 32px;flex-direction:column;overflow-y:auto;transition:background 0.4s}
+.mobile-menu.open{display:flex}
+.mob-nav-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.9rem;font-weight:700;color:var(--txt);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s;display:block}
+.mob-nav-link:hover{color:var(--accent)}
+.mob-nav-cta{margin-top:28px;background:#4F46E5;color:#fff;padding:20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;text-align:center;text-decoration:none;display:block}
+.policy-hero{padding:130px 60px 56px;border-bottom:1px solid var(--border);transition:border-color 0.4s}
+.policy-hero-inner{max-width:760px;margin:0 auto}
+.policy-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:16px}
+.policy-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px}
+.policy-hero p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:20px}
+.policy-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:0.78rem;color:var(--muted)}
+.policy-meta span{display:flex;align-items:center;gap:6px}
+.policy-body{max-width:760px;margin:0 auto;padding:64px 60px 96px}
+.policy-toc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 28px;margin-bottom:56px;transition:background 0.4s,border-color 0.4s}
+.policy-toc h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--lilac);margin-bottom:14px}
+.policy-toc ol{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.policy-toc ol li a{font-size:0.88rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.policy-toc ol li a:hover{color:var(--accent)}
+.policy-section{margin-bottom:52px;scroll-margin-top:100px}
+.policy-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);transition:border-color 0.4s}
+.policy-section p{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.policy-section p:last-child{margin-bottom:0}
+.policy-section ul,.policy-section ol{padding-left:20px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.policy-section li{font-size:0.92rem;color:var(--muted);line-height:1.7}
+.policy-section strong{color:var(--txt);font-weight:600}
+.policy-section a{color:var(--accent);text-decoration:none}
+.policy-section a:hover{text-decoration:underline}
+.highlight-box{background:var(--surface);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:16px 20px;margin:20px 0;transition:background 0.4s}
+.highlight-box p{margin:0;font-size:0.88rem}
+/* Cookie table */
+.cookie-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.87rem}
+.cookie-table th{text-align:left;padding:10px 14px;background:var(--surface);color:var(--txt);font-weight:600;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;border-bottom:2px solid var(--borderM)}
+.cookie-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;transition:border-color 0.4s}
+.cookie-table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.badge-essential{background:rgba(16,185,129,0.12);color:#10B981;border:1px solid rgba(16,185,129,0.2)}
+.badge-analytics{background:rgba(245,158,11,0.12);color:#F59E0B;border:1px solid rgba(245,158,11,0.2)}
+.badge-pref{background:rgba(79,70,229,0.12);color:var(--lilac);border:1px solid var(--accentB)}
+/* Manage button */
+.manage-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accentS);border:1px solid var(--accentB);color:var(--lilac);padding:10px 20px;border-radius:4px;font-size:0.84rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:12px}
+.manage-btn:hover{background:var(--accentB)}
+footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.footer-brand .logo{color:#fff}
+.footer-brand p{font-size:0.81rem;color:rgba(255,255,255,0.38);line-height:1.7;margin-top:12px;max-width:280px}
+.footer-col h5{font-size:0.69rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:600;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-col ul a{font-size:0.79rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s}
+.footer-col ul a:hover{color:#818CF8}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:0.73rem;flex-wrap:wrap;gap:12px}
+.footer-bottom a{color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s}
+.footer-bottom a:hover{color:#818CF8}
+.footer-legal{display:flex;gap:16px}
+.footer-socials{display:flex;gap:10px}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.4);font-size:0.78rem;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:#4F46E5;color:#818CF8}
+@media(max-width:960px){
+  nav{padding:14px 24px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}
+  .policy-hero{padding:110px 24px 44px}.policy-body{padding:48px 24px 72px}
+  footer{padding:44px 28px 28px}.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+  .cookie-table{font-size:0.8rem}
+}
+@media(max-width:640px){
+  .policy-hero{padding:96px 16px 36px}.policy-body{padding:36px 16px 56px}
+  footer{padding:36px 16px 24px}.footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .cookie-table th:nth-child(3),.cookie-table td:nth-child(3){display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a class="mob-nav-link" href="index.html">Home</a>
+  <a class="mob-nav-link" href="about.html">About</a>
+  <a class="mob-nav-link" href="services.html">Services</a>
+  <a class="mob-nav-link" href="portfolio.html">Work</a>
+  <a class="mob-nav-link" href="contact.html">Contact</a>
+  <a class="mob-nav-cta" href="contact.html">Start a Project →</a>
+</div>
+
+<nav id="main-nav">
+  <a class="logo" href="index.html">DZiel <span>Creative</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+      <span class="toggle-icon" id="toggleIcon">☀️</span>
+      <div class="toggle-track"><div class="toggle-knob"></div></div>
+      <span class="toggle-label" id="toggleLabel">Light</span>
+    </button>
+    <a class="nav-cta" href="contact.html">Start a Project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="policy-hero">
+  <div class="policy-hero-inner">
+    <div class="policy-eyebrow">Legal</div>
+    <h1>Cookie Policy</h1>
+    <p>This policy explains what cookies are, which ones we use on this website, why we use them, and how you can control them.</p>
+    <div class="policy-meta">
+      <span>📅 Last updated: January 2025</span>
+      <span>🏢 DZiel Creative Ltd</span>
+      <span>🇬🇧 United Kingdom</span>
+    </div>
+  </div>
+</div>
+
+<div class="policy-body">
+
+  <div class="policy-toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#what-are-cookies">What are cookies?</a></li>
+      <li><a href="#what-we-use">Cookies we use</a></li>
+      <li><a href="#essential">Essential cookies</a></li>
+      <li><a href="#analytics">Analytics cookies</a></li>
+      <li><a href="#preference">Preference cookies</a></li>
+      <li><a href="#managing">Managing your cookies</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </div>
+
+  <div class="policy-section" id="what-are-cookies">
+    <h2>1. What are cookies?</h2>
+    <p>Cookies are small text files that are stored on your device (computer, tablet, or phone) when you visit a website. They help the website remember information about your visit — such as your preferences or whether you have agreed to our cookie policy — so you don't have to re-enter it every time.</p>
+    <p>Cookies are not programs and cannot carry viruses or install malware. They simply store small pieces of information to improve your experience.</p>
+  </div>
+
+  <div class="policy-section" id="what-we-use">
+    <h2>2. Cookies we use</h2>
+    <p>We use a small number of cookies, grouped into three categories:</p>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Cookie name</th>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>dziel-theme</code></td>
+          <td><span class="badge badge-essential">Essential</span></td>
+          <td>Stores your light/dark theme preference so it persists between visits</td>
+          <td>Persistent (localStorage)</td>
+        </tr>
+        <tr>
+          <td><code>dziel-cookie-consent</code></td>
+          <td><span class="badge badge-essential">Essential</span></td>
+          <td>Records whether you have accepted or declined non-essential cookies</td>
+          <td>365 days</td>
+        </tr>
+        <tr>
+          <td><code>_ga</code>, <code>_gid</code></td>
+          <td><span class="badge badge-analytics">Analytics</span></td>
+          <td>Google Analytics — helps us understand how visitors use the site (pages visited, time on site, traffic source). Only set with your consent.</td>
+          <td>2 years / 24 hours</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <p>We do not use advertising cookies, tracking pixels, or any cookies that share your data with third parties for marketing purposes.</p>
+    </div>
+  </div>
+
+  <div class="policy-section" id="essential">
+    <h2>3. Essential cookies</h2>
+    <p>Essential cookies are strictly necessary for the website to function. They do not collect personal data and cannot be disabled without breaking core functionality.</p>
+    <p>On this website, essential cookies store:</p>
+    <ul>
+      <li>Your <strong>colour theme preference</strong> (dark or light mode) — so your choice is remembered the next time you visit</li>
+      <li>Your <strong>cookie consent decision</strong> — so we do not show you the consent banner on every page</li>
+    </ul>
+    <p>These do not require your consent under the Privacy and Electronic Communications Regulations (PECR).</p>
+  </div>
+
+  <div class="policy-section" id="analytics">
+    <h2>4. Analytics cookies</h2>
+    <p>We use Google Analytics to understand how visitors interact with our website — for example, which pages are most visited and where visitors come from. This helps us improve the site over time.</p>
+    <p><strong>Analytics cookies are only placed if you accept them</strong> when the cookie banner appears. If you decline, no analytics data is collected about your visit.</p>
+    <p>The data collected is aggregated and anonymised — we cannot identify you personally from it. Google Analytics data is processed by Google in accordance with their privacy policy. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy →</a></p>
+    <p>You can also opt out of Google Analytics across all websites using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on →</a></p>
+  </div>
+
+  <div class="policy-section" id="preference">
+    <h2>5. Preference cookies</h2>
+    <p>At present, we do not use any third-party preference or personalisation cookies beyond the theme preference stored locally on your device. We will update this policy if that changes.</p>
+  </div>
+
+  <div class="policy-section" id="managing">
+    <h2>6. Managing your cookies</h2>
+    <p>You have several ways to manage cookies:</p>
+    <p><strong>Via our cookie banner:</strong> When you first visit the site, you will see a banner asking for your consent to analytics cookies. You can accept or decline. You can change your preference at any time by clicking the button below:</p>
+    <button class="manage-btn" onclick="resetCookieConsent()">⚙️ Manage cookie preferences</button>
+    <p style="margin-top:20px"><strong>Via your browser:</strong> Most browsers allow you to view, block, and delete cookies through their settings. Note that blocking essential cookies may affect how the website works.</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome cookie settings →</a></li>
+      <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" target="_blank" rel="noopener">Firefox cookie settings →</a></li>
+      <li><a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari cookie settings →</a></li>
+      <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge" target="_blank" rel="noopener">Edge cookie settings →</a></li>
+    </ul>
+  </div>
+
+  <div class="policy-section" id="changes">
+    <h2>7. Changes to this policy</h2>
+    <p>We may update this Cookie Policy from time to time. We will update the "last updated" date at the top of this page when we do. We recommend checking back periodically.</p>
+  </div>
+
+  <div class="policy-section" id="contact">
+    <h2>8. Contact us</h2>
+    <p>If you have questions about our use of cookies, please contact us:</p>
+    <ul>
+      <li><strong>Email:</strong> <a id="cookieEmail" href="#">hello@dzielcreative.com</a></li>
+      <li><strong>Website:</strong> <a href="contact.html">dzielcreative.com/contact</a></li>
+    </ul>
+    <p>For more information about how we handle your personal data more broadly, please read our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">DZiel <span>Creative</span></a>
+      <p>A UK-based design studio creating purposeful, user-centred digital experiences for clients in UK, USA &amp; Australia.</p>
+    </div>
+    <div class="footer-col"><h5>Services</h5><ul>
+      <li><a href="services.html">Website Design</a></li>
+      <li><a href="services.html">App Design</a></li>
+      <li><a href="services.html">Branding</a></li>
+      <li><a href="services.html">UX Evaluation</a></li>
+      <li><a href="services.html">Consultation</a></li>
+      <li><a href="services.html">Mentoring</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Studio</h5><ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Start a Project</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Legal</h5><ul>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="cookie-policy.html">Cookie Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+    <div class="footer-socials">
+      <a class="social-link" href="#" title="LinkedIn">in</a>
+      <a class="social-link" href="#" title="Behance">Be</a>
+      <a class="social-link" href="#" title="Dribbble">Dr</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var H=document.documentElement;
+  var t='dark';try{t=localStorage.getItem('dziel-theme')||'dark';}catch(e){}
+  applyTheme(t);
+  var tog=document.getElementById('themeToggle');
+  if(tog)tog.addEventListener('click',function(){var next=H.getAttribute('data-theme')==='dark'?'light':'dark';applyTheme(next);try{localStorage.setItem('dziel-theme',next);}catch(e){};});
+  function applyTheme(v){H.setAttribute('data-theme',v);var ic=document.getElementById('toggleIcon'),lb=document.getElementById('toggleLabel');if(ic)ic.textContent=v==='light'?'🌙':'☀️';if(lb)lb.textContent=v==='light'?'Dark':'Light';}
+  var ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+  if(ham&&mob){ham.addEventListener('click',function(){var o=mob.classList.toggle('open');ham.classList.toggle('open',o);ham.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';});mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';});});}
+  var nav=document.getElementById('main-nav');
+  window.addEventListener('scroll',function(){if(!nav)return;nav.style.padding=window.scrollY>60?(window.innerWidth>960?'12px 60px':'10px 24px'):(window.innerWidth>960?'20px 60px':'14px 24px');},{passive:true});
+  var u='hello',d='dzielcreative.com';
+  var el=document.getElementById('cookieEmail');if(el){el.href='mailto:'+u+'@'+d;el.textContent=u+'@'+d;}
+})();
+function resetCookieConsent(){
+  try{localStorage.removeItem('dziel-cookie-consent');}catch(e){}
+  alert('Your cookie preferences have been reset. The cookie banner will appear on your next page visit.');
+}
+</script>
+</body>
+</html>
