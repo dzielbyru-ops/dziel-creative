@@ -295,7 +295,7 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
             <div class="contact-item-icon">✉️</div>
             <div class="contact-item-text">
               <div class="contact-item-label">Email</div>
-              <div class="contact-item-value"><a id="emailLink" href="#">hello@dzielcreative.com</a></div>
+              <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#09616c656566496d73606c656a7b6c687d607f6c276a6664"><span class="__cf_email__" data-cfemail="e088858c8c8fa0849a89858c8392858194899685ce838f8d">[email&#160;protected]</span></a></div>
             </div>
           </div>
           <div class="contact-item">
@@ -445,6 +445,10 @@ input.is-valid,textarea.is-valid,select.is-valid{border-color:#10B981 !important
   </div>
   <div class="footer-bottom">
     <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:16px">
+      <a href="privacy-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;font-size:0.76rem">Privacy Policy</a>
+      <a href="cookie-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;font-size:0.76rem">Cookie Policy</a>
+    </div>
     <div class="footer-socials">
       <a class="social-link" href="#" title="LinkedIn">in</a>
       <a class="social-link" href="#" title="Behance">Be</a>
@@ -627,14 +631,6 @@ function handleSubmit() {
     if (wrap) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 1000);
 }
-  /* ── EMAIL LINK FIX ── */
-  (function(){
-    var u='hello', d='dzielcreative.com';
-    document.querySelectorAll('#emailLink, .email-link').forEach(function(el){
-      el.href='mailto:'+u+'@'+d;
-      el.textContent=u+'@'+d;
-    });
-  })();
 </script>
 </body>
 </html>

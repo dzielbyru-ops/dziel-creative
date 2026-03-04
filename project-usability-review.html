@@ -18,16 +18,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);over
 
 /* ── NAV — identical to all other pages ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s,border-color 0.4s}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:-0.02em;color:var(--txt);text-decoration:none;flex-shrink:0}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;color:var(--txt);text-decoration:none}
 .logo span{color:#818CF8}
-.nav-right{display:flex;align-items:center;gap:14px}
-.nav-links{display:flex;gap:28px;list-style:none}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:0.84rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
 .nav-links a:hover,.nav-links a.active{color:var(--accent)}
-.nav-cta{background:var(--accent);color:#fff;padding:10px 20px;border-radius:3px;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s;white-space:nowrap}
+.nav-cta{background:var(--accent);color:#fff;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
 .nav-cta:hover{background:var(--accentH);transform:translateY(-1px)}
 /* TOGGLE */
-.theme-toggle{display:flex;align-items:center;gap:7px;cursor:pointer;user-select:none;background:none;border:none;padding:6px;min-height:44px}
+.theme-toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;background:none;border:none;padding:0}
 .toggle-track{width:50px;height:27px;background:var(--tkBg);border:1.5px solid var(--tkBdr);border-radius:99px;position:relative;flex-shrink:0;transition:background 0.35s,border-color 0.35s}
 .toggle-knob{position:absolute;top:3px;left:3px;width:19px;height:19px;background:var(--accent);border-radius:50%;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1)}
 [data-theme="light"] .toggle-knob{transform:translateX(23px)}
@@ -38,13 +38,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:990;background:var(--bg);padding:88px 32px 32px;flex-direction:column;overflow-y:auto;transition:background 0.4s}
-.mobile-menu.open{display:flex}
-.mob-nav-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.9rem;font-weight:700;color:var(--txt);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s;display:block}
-.mob-nav-link:hover,.mob-nav-link.active{color:var(--accent)}
-.mob-nav-cta{margin-top:28px;background:#4F46E5;color:#fff;padding:20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;text-align:center;text-decoration:none;display:block}
-.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:10px 16px 14px;background:var(--bg);border-top:1px solid var(--border);transition:transform 0.3s ease,background 0.4s,border-color 0.4s}
-.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:15px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;flex-direction:column;padding:100px 40px 40px;gap:28px;overflow-y:auto;transition:background 0.4s}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:var(--txt);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:20px;transition:color 0.2s}
+.mob-menu a:hover{color:var(--accent)}
+.mob-cta{background:var(--accent);color:#fff!important;border-radius:3px;padding:18px 28px;border-bottom:none!important;text-align:center;font-size:1rem!important}
 
 /* ── HERO ── */
 .cs-hero{padding:140px 60px 0;background:radial-gradient(ellipse at 65% 0%,rgba(79,70,229,0.22) 0%,transparent 55%),var(--bg);transition:background 0.4s}
@@ -163,11 +161,9 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   .cs-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:20px}
 }
 @media(max-width:960px){
-  nav{padding:14px 24px}
+  nav{padding:16px 24px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  .mob-sticky{display:block}
-  body{padding-bottom:70px}
   .cs-hero{padding:120px 24px 0}
   .cs-body{padding:60px 24px 80px}
   .cs-meta{flex-wrap:wrap}
@@ -189,37 +185,35 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
 
 <!-- NAV — matches all other pages exactly -->
 <nav id="main-nav">
-  <a class="logo" href="index.html">DZiel <span>Creative</span></a>
-  <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html" class="active">Work</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <a href="index.html" class="logo">DZiel<span>.</span></a>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
-      <span class="toggle-icon" id="toggleIcon">☀️</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html" class="active">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <div class="toggle-track"><div class="toggle-knob"></div></div>
+      <span class="toggle-icon" id="toggleIcon">☀️</span>
       <span class="toggle-label" id="toggleLabel">Light</span>
     </button>
-    <a class="nav-cta" href="contact.html">Start a Project</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <a href="contact.html" class="nav-cta">Start a Project →</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <a class="mob-nav-link" href="index.html">Home</a>
-  <a class="mob-nav-link" href="about.html">About</a>
-  <a class="mob-nav-link" href="services.html">Services</a>
-  <a class="mob-nav-link active" href="portfolio.html">Work</a>
-  <a class="mob-nav-link" href="contact.html">Contact</a>
-  <a class="mob-nav-cta" href="contact.html">Start a Project →</a>
-</div>
-<div class="mob-sticky" id="mobSticky">
-  <a href="contact.html">Start a Project →</a>
+<div class="mob-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html">Work</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-cta">Start a Project →</a>
 </div>
 
 <!-- HERO -->
@@ -462,6 +456,10 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   </div>
   <div class="footer-bottom">
     <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:16px">
+      <a href="privacy-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;font-size:0.76rem">Privacy Policy</a>
+      <a href="cookie-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;font-size:0.76rem">Cookie Policy</a>
+    </div>
     <div class="footer-socials">
       <a class="social-link" href="#" title="LinkedIn">in</a>
       <a class="social-link" href="#" title="Behance">Be</a>
@@ -526,16 +524,6 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
       });
     });
   }
-
-  // ── MOBILE STICKY CTA ──
-  var sticky = document.getElementById('mobSticky');
-  var lastY = 0;
-  window.addEventListener('scroll', function() {
-    if (!sticky) return;
-    var cur = window.scrollY;
-    sticky.style.transform = cur < 200 ? 'translateY(0)' : cur > lastY ? 'translateY(110%)' : 'translateY(0)';
-    lastY = cur;
-  }, { passive: true });
 })();
 </script>
 </body>
