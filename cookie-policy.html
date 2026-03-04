@@ -14,7 +14,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;transition:var(--t);line-height:1.7}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s,border-color 0.4s}
 .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:-0.02em;color:var(--txt);text-decoration:none;flex-shrink:0}.logo span{color:#818CF8}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:0.83rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
@@ -27,17 +26,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .toggle-knob{position:absolute;top:3px;left:3px;width:17px;height:17px;background:var(--accent);border-radius:50%;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1)}
 [data-theme="light"] .toggle-knob{transform:translateX(21px)}
 .toggle-icon{font-size:0.85rem}.toggle-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px;flex-shrink:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:var(--navBg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s,border-color 0.4s}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;color:var(--txt);text-decoration:none}
+.logo span{color:#818CF8}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:0.84rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
+.nav-cta:hover{background:var(--accentH);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px;border-radius:4px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--txt);border-radius:2px;transition:transform 0.3s,opacity 0.3s,background 0.4s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:990;background:var(--bg);padding:88px 32px 32px;flex-direction:column;overflow-y:auto;transition:background 0.4s}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);padding:100px 32px 120px;flex-direction:column;gap:0;overflow-y:auto;transition:background 0.4s}
 .mobile-menu.open{display:flex}
-.mob-nav-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.9rem;font-weight:700;color:var(--txt);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s;display:block}
-.mob-nav-link:hover{color:var(--accent)}
-.mob-nav-cta{margin-top:28px;background:#4F46E5;color:#fff;padding:20px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;text-align:center;text-decoration:none;display:block}
-.policy-hero{padding:130px 60px 56px;border-bottom:1px solid var(--border);transition:border-color 0.4s}
+.mobile-menu-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s,border-color 0.4s;display:block}
+.mobile-menu-link:hover,.mobile-menu-link.active{color:var(--accent)}
+.mobile-menu-cta{margin-top:28px;background:#4F46E5;color:#fff!important;padding:20px 32px;border-radius:4px;font-size:1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.25s;border-bottom:none!important}
+.mobile-menu-cta:hover{background:#4338CA!important}
+.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:12px 16px 16px;background:var(--bg);border-top:1px solid var(--border);transition:background 0.4s,border-color 0.4s}
+.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:16px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+padding:130px 60px 56px;border-bottom:1px solid var(--border);transition:border-color 0.4s}
 .policy-hero-inner{max-width:760px;margin:0 auto}
 .policy-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:16px}
 .policy-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px}
@@ -90,7 +101,7 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
 .social-link:hover{border-color:#4F46E5;color:#818CF8}
 @media(max-width:960px){
   nav{padding:14px 24px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}
-  .policy-hero{padding:110px 24px 44px}.policy-body{padding:48px 24px 72px}
+    .policy-hero{padding:110px 24px 44px}.policy-body{padding:48px 24px 72px}
   footer{padding:44px 28px 28px}.footer-top{grid-template-columns:1fr 1fr;gap:28px}
   .cookie-table{font-size:0.8rem}
 }
@@ -100,17 +111,21 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   .footer-bottom{flex-direction:column;align-items:flex-start}
   .cookie-table th:nth-child(3),.cookie-table td:nth-child(3){display:none}
 }
+
 </style>
 </head>
 <body>
 
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <a class="mob-nav-link" href="index.html">Home</a>
-  <a class="mob-nav-link" href="about.html">About</a>
-  <a class="mob-nav-link" href="services.html">Services</a>
-  <a class="mob-nav-link" href="portfolio.html">Work</a>
-  <a class="mob-nav-link" href="contact.html">Contact</a>
-  <a class="mob-nav-cta" href="contact.html">Start a Project →</a>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <a class="mobile-menu-link" href="index.html">Home</a>
+  <a class="mobile-menu-link" href="about.html">About</a>
+  <a class="mobile-menu-link" href="services.html">Services</a>
+  <a class="mobile-menu-link" href="portfolio.html">Work</a>
+  <a class="mobile-menu-link" href="contact.html">Contact</a>
+  <a class="mobile-menu-cta" href="contact.html">Start a Project →</a>
+</div>
+<div class="mob-sticky" id="mobSticky">
+  <a href="contact.html">Start a Project →</a>
 </div>
 
 <nav id="main-nav">
@@ -315,10 +330,4 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   var u='hello',d='dzielcreative.com';
   var el=document.getElementById('cookieEmail');if(el){el.href='mailto:'+u+'@'+d;el.textContent=u+'@'+d;}
 })();
-function resetCookieConsent(){
-  try{localStorage.removeItem('dziel-cookie-consent');}catch(e){}
-  alert('Your cookie preferences have been reset. The cookie banner will appear on your next page visit.');
-}
-</script>
-</body>
-</html>
+function resetCookieConsent(
