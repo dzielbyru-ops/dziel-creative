@@ -199,13 +199,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 }
 .project-card:hover .project-overlay{ opacity:1; }
 .overlay-cta{
-  background:#4F46E5;color:#fff;
+  background:#fff;color:#0F172A;
   padding:11px 28px;border-radius:3px;
-  font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
-  text-decoration:none;display:inline-block;
-  transform:translateY(10px);transition:transform 0.35s,background 0.2s;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  transform:translateY(10px);transition:transform 0.35s;
 }
-.overlay-cta:hover{background:#4338CA}
 .project-card:hover .overlay-cta{transform:translateY(0)}
 
 /* Country badge */
@@ -392,26 +390,103 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
 }
 
 
-/* Mobile card CTA */
-.card-mobile-cta{
-  display:none;
-  margin-top:16px;
-  padding:14px 0 0;
-  border-top:1px solid var(--border);
+/* ── GDPR COOKIE CONSENT POPUP ── */
+.cookie-backdrop{
+  position:fixed;inset:0;z-index:9998;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(2px);
+  opacity:0;transition:opacity 0.3s;
+  pointer-events:none;
+}
+.cookie-backdrop.show{opacity:1;pointer-events:all}
+.cookie-popup{
+  position:fixed;z-index:9999;
+  bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  width:calc(100% - 32px);max-width:480px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  box-shadow:0 24px 64px rgba(0,0,0,0.35);
+  padding:28px 28px 24px;
+  opacity:0;transition:opacity 0.35s,transform 0.35s;
+  pointer-events:none;
+}
+.cookie-popup.show{
+  opacity:1;transform:translateX(-50%) translateY(0);
+  pointer-events:all;
+}
+.cookie-popup-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;cursor:pointer;
+  color:var(--muted);font-size:1.1rem;line-height:1;
+  padding:4px;transition:color 0.2s;
+}
+.cookie-popup-close:hover{color:var(--txt)}
+.cookie-popup h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--txt);margin-bottom:12px;
+}
+.cookie-popup p{
+  font-size:0.87rem;color:var(--muted);
+  line-height:1.65;margin-bottom:20px;
+}
+.cookie-popup p a{color:var(--accent);text-decoration:none}
+.cookie-popup p a:hover{text-decoration:underline}
+.cookie-popup-actions{
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.cookie-btn{
+  flex:1;min-width:100px;
+  padding:11px 16px;border-radius:5px;
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:0.82rem;font-weight:700;
-  letter-spacing:0.06em;text-transform:uppercase;
-  color:var(--accent);text-decoration:none;
-  transition:color 0.2s;
+  letter-spacing:0.04em;text-transform:uppercase;
+  cursor:pointer;border:1.5px solid var(--border);
+  transition:background 0.2s,border-color 0.2s,color 0.2s,transform 0.15s;
+  white-space:nowrap;text-align:center;
 }
-.card-mobile-cta:hover{color:var(--accentH)}
-@media(max-width:640px){
-  .project-overlay{display:none!important}
-  .card-mobile-cta{display:block}
+.cookie-btn:hover{transform:translateY(-1px)}
+.cookie-btn-customise{
+  background:transparent;
+  color:var(--txt);
+  border-color:var(--borderM);
 }
+.cookie-btn-customise:hover{border-color:var(--accent);color:var(--accent)}
+.cookie-btn-reject{
+  background:transparent;
+  color:var(--txt);
+  border-color:var(--borderM);
+}
+.cookie-btn-reject:hover{border-color:var(--accent);color:var(--accent)}
+.cookie-btn-accept{
+  background:#4F46E5;color:#fff;
+  border-color:#4F46E5;
+}
+.cookie-btn-accept:hover{background:#4338CA;border-color:#4338CA}
+@media(max-width:480px){
+  .cookie-popup{bottom:16px;padding:22px 20px 20px}
+  .cookie-popup-actions{flex-direction:column}
+  .cookie-btn{flex:none;width:100%}
+}
+
 </style>
 </head>
 <body>
+
+<!-- GDPR Cookie Consent -->
+<div class="cookie-backdrop" id="cookieBackdrop"></div>
+<div class="cookie-popup" id="cookiePopup" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
+  <button class="cookie-popup-close" id="cookieClose" aria-label="Close">✕</button>
+  <h3 id="cookieTitle">We value your privacy</h3>
+  <p>We use cookies to enhance your browsing experience and analyse our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="cookie-policy.html">Cookie Policy</a></p>
+  <div class="cookie-popup-actions">
+    <button class="cookie-btn cookie-btn-customise" id="cookieCustomise">Customise</button>
+    <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject All</button>
+    <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -478,7 +553,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-1">🏥</div>
           <div class="country-badge">🇬🇧 United Kingdom</div>
-          <div class="project-overlay"><a class="overlay-cta" href="project-usability-review.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">UX Redesign · Healthcare</div>
@@ -492,7 +567,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2024</span>
           </div>
-          <a class="card-mobile-cta" href="project-usability-review.html">View Project →</a>
         </div>
       </div>
 
@@ -501,7 +575,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-2">🛍️</div>
           <div class="country-badge">🇬🇧 United Kingdom</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">Web Design · E-commerce</div>
@@ -514,7 +588,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2024</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -523,7 +596,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-3">📊</div>
           <div class="country-badge">🇺🇸 United States</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">App Design · FinTech</div>
@@ -536,7 +609,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2023</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -545,7 +617,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-4">🍃</div>
           <div class="country-badge">🇦🇺 Australia</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">Branding · Wellness</div>
@@ -558,7 +630,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2024</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -567,7 +638,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-5">🎓</div>
           <div class="country-badge">🇺🇸 United States</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">App Design · EdTech</div>
@@ -580,7 +651,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2023</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -589,7 +659,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-6">🏢</div>
           <div class="country-badge">🇬🇧 United Kingdom</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">Web Design · Consulting</div>
@@ -602,7 +672,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2024</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -611,7 +680,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-7">🚗</div>
           <div class="country-badge">🇦🇺 Australia</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">App Design · Transport</div>
@@ -624,7 +693,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2023</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -633,7 +701,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-8">💬</div>
           <div class="country-badge">🇺🇸 United States</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">UX Audit · SaaS</div>
@@ -646,7 +714,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2024</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -655,7 +722,7 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
         <div class="project-thumb">
           <div class="thumb-bg tb-9">✨</div>
           <div class="country-badge">🇦🇺 Australia</div>
-          <div class="project-overlay"><a class="overlay-cta" href="contact.html">View Project</a></div>
+          <div class="project-overlay"><div class="overlay-cta">View Project</div></div>
         </div>
         <div class="project-info">
           <div class="project-tag">Branding · Beauty</div>
@@ -668,7 +735,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
             </div>
             <span class="project-year">2023</span>
           </div>
-          <a class="card-mobile-cta" href="contact.html">View Project →</a>
         </div>
       </div>
 
@@ -721,7 +787,6 @@ footer{background:var(--ftrBg);color:var(--ftrTxt);padding:56px 60px 36px;transi
   </div>
   <div class="footer-bottom">
     <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
-    <div style="display:flex;gap:16px"><a href="privacy-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.8rem">Privacy Policy</a><a href="cookie-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.8rem">Cookie Policy</a></div>
     <div class="footer-socials">
       <a class="social-link" href="#" title="LinkedIn">in</a>
       <a class="social-link" href="#" title="Behance">Be</a>
@@ -823,6 +888,54 @@ window.addEventListener('scroll', function(){
   else { sticky.style.transform = 'translateY(0)'; }
   lastScroll = cur;
 }, {passive:true});
+
+
+  /* ── GDPR COOKIE CONSENT ── */
+  (function(){
+    var KEY = 'dziel-cookie-consent';
+    var popup    = document.getElementById('cookiePopup');
+    var backdrop = document.getElementById('cookieBackdrop');
+
+    function dismiss(choice){
+      popup.classList.remove('show');
+      backdrop.classList.remove('show');
+      try{ localStorage.setItem(KEY, choice); }catch(e){}
+      if(choice === 'accepted') loadAnalytics();
+    }
+
+    function loadAnalytics(){
+      /* Replace G-XXXXXXXXXX with your GA4 ID when ready */
+      /* var GA_ID='G-XXXXXXXXXX';
+      var s=document.createElement('script');
+      s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+      s.async=true;document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true}); */
+    }
+
+    /* Show if no previous choice */
+    var saved;
+    try{ saved = localStorage.getItem(KEY); }catch(e){}
+    if(!saved){
+      setTimeout(function(){
+        popup.classList.add('show');
+        backdrop.classList.add('show');
+      }, 1200);
+    } else if(saved === 'accepted'){
+      loadAnalytics();
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click',    function(){ dismiss('accepted'); });
+    document.getElementById('cookieReject').addEventListener('click',     function(){ dismiss('rejected'); });
+    document.getElementById('cookieClose').addEventListener('click',      function(){ dismiss('rejected'); });
+    document.getElementById('cookieBackdrop').addEventListener('click',   function(){ dismiss('rejected'); });
+
+    /* Customise: open cookie policy page */
+    document.getElementById('cookieCustomise').addEventListener('click',  function(){
+      window.location.href = 'cookie-policy.html';
+    });
+  })();
 
 </script>
 </body>

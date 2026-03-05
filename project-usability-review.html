@@ -24,8 +24,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:0.84rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s}
 .nav-links a:hover,.nav-links a.active{color:var(--accent)}
-.nav-cta{background:var(--accent);color:#fff!important;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
-.nav-cta:hover{background:#4338CA;transform:translateY(-1px)}
+.nav-cta{background:var(--accent);color:#fff;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
+.nav-cta:hover{background:var(--accentH);transform:translateY(-1px)}
 /* TOGGLE */
 .theme-toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;background:none;border:none;padding:0}
 .toggle-track{width:50px;height:27px;background:var(--tkBg);border:1.5px solid var(--tkBdr);border-radius:99px;position:relative;flex-shrink:0;transition:background 0.35s,border-color 0.35s}
@@ -38,14 +38,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);padding:100px 32px 120px;flex-direction:column;gap:0;overflow-y:auto;transition:background 0.4s}
-.mobile-menu.open{display:flex}
-.mobile-menu-link{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:700;color:var(--txt);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--border);letter-spacing:-0.02em;transition:color 0.2s,border-color 0.4s;display:block}
-.mobile-menu-link:hover,.mobile-menu-link.active{color:var(--accent)}
-.mobile-menu-cta{margin-top:28px;background:#4F46E5;color:#fff!important;padding:20px 32px;border-radius:4px;font-size:1rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.25s;border-bottom:none!important}
-.mobile-menu-cta:hover{background:#4338CA!important}
-.mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;padding:12px 16px 16px;background:var(--bg);border-top:1px solid var(--border);transition:background 0.4s,border-color 0.4s}
-.mob-sticky a{display:block;background:#4F46E5;color:#fff;text-align:center;padding:16px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;flex-direction:column;padding:100px 40px 40px;gap:28px;overflow-y:auto;transition:background 0.4s}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:var(--txt);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:20px;transition:color 0.2s}
+.mob-menu a:hover{color:var(--accent)}
+.mob-cta{background:var(--accent);color:#fff!important;border-radius:3px;padding:18px 28px;border-bottom:none!important;text-align:center;font-size:1rem!important}
 
 /* ── HERO ── */
 .cs-hero{padding:140px 60px 0;background:radial-gradient(ellipse at 65% 0%,rgba(79,70,229,0.22) 0%,transparent 55%),var(--bg);transition:background 0.4s}
@@ -165,7 +162,7 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
 }
 @media(max-width:960px){
   nav{padding:16px 24px}
-  .nav-links,.nav-cta{background:var(--accent);color:#fff!important;padding:11px 26px;border-radius:3px;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s}
+  .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
   .cs-hero{padding:120px 24px 0}
   .cs-body{padding:60px 24px 80px}
@@ -182,9 +179,104 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   .cs-cover{height:220px}
   .cs-cover-stat-row{display:none}
 }
+
+/* ── GDPR COOKIE CONSENT POPUP ── */
+.cookie-backdrop{
+  position:fixed;inset:0;z-index:9998;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(2px);
+  opacity:0;transition:opacity 0.3s;
+  pointer-events:none;
+}
+.cookie-backdrop.show{opacity:1;pointer-events:all}
+.cookie-popup{
+  position:fixed;z-index:9999;
+  bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  width:calc(100% - 32px);max-width:480px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  box-shadow:0 24px 64px rgba(0,0,0,0.35);
+  padding:28px 28px 24px;
+  opacity:0;transition:opacity 0.35s,transform 0.35s;
+  pointer-events:none;
+}
+.cookie-popup.show{
+  opacity:1;transform:translateX(-50%) translateY(0);
+  pointer-events:all;
+}
+.cookie-popup-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;cursor:pointer;
+  color:var(--muted);font-size:1.1rem;line-height:1;
+  padding:4px;transition:color 0.2s;
+}
+.cookie-popup-close:hover{color:var(--txt)}
+.cookie-popup h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--txt);margin-bottom:12px;
+}
+.cookie-popup p{
+  font-size:0.87rem;color:var(--muted);
+  line-height:1.65;margin-bottom:20px;
+}
+.cookie-popup p a{color:var(--accent);text-decoration:none}
+.cookie-popup p a:hover{text-decoration:underline}
+.cookie-popup-actions{
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.cookie-btn{
+  flex:1;min-width:100px;
+  padding:11px 16px;border-radius:5px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.82rem;font-weight:700;
+  letter-spacing:0.04em;text-transform:uppercase;
+  cursor:pointer;border:1.5px solid var(--border);
+  transition:background 0.2s,border-color 0.2s,color 0.2s,transform 0.15s;
+  white-space:nowrap;text-align:center;
+}
+.cookie-btn:hover{transform:translateY(-1px)}
+.cookie-btn-customise{
+  background:transparent;
+  color:var(--txt);
+  border-color:var(--borderM);
+}
+.cookie-btn-customise:hover{border-color:var(--accent);color:var(--accent)}
+.cookie-btn-reject{
+  background:transparent;
+  color:var(--txt);
+  border-color:var(--borderM);
+}
+.cookie-btn-reject:hover{border-color:var(--accent);color:var(--accent)}
+.cookie-btn-accept{
+  background:#4F46E5;color:#fff;
+  border-color:#4F46E5;
+}
+.cookie-btn-accept:hover{background:#4338CA;border-color:#4338CA}
+@media(max-width:480px){
+  .cookie-popup{bottom:16px;padding:22px 20px 20px}
+  .cookie-popup-actions{flex-direction:column}
+  .cookie-btn{flex:none;width:100%}
+}
+
 </style>
 </head>
 <body>
+
+<!-- GDPR Cookie Consent -->
+<div class="cookie-backdrop" id="cookieBackdrop"></div>
+<div class="cookie-popup" id="cookiePopup" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
+  <button class="cookie-popup-close" id="cookieClose" aria-label="Close">✕</button>
+  <h3 id="cookieTitle">We value your privacy</h3>
+  <p>We use cookies to enhance your browsing experience and analyse our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="cookie-policy.html">Cookie Policy</a></p>
+  <div class="cookie-popup-actions">
+    <button class="cookie-btn cookie-btn-customise" id="cookieCustomise">Customise</button>
+    <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject All</button>
+    <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+  </div>
+</div>
+
 
 <!-- NAV — matches all other pages exactly -->
 <nav id="main-nav">
@@ -210,16 +302,13 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
-  <a class="mobile-menu-link" href="index.html">Home</a>
-  <a class="mobile-menu-link" href="about.html">About</a>
-  <a class="mobile-menu-link" href="services.html">Services</a>
-  <a class="mobile-menu-link active" href="portfolio.html">Work</a>
-  <a class="mobile-menu-link" href="contact.html">Contact</a>
-  <a class="mobile-menu-cta" href="contact.html">Start a Project →</a>
-</div>
-<div class="mob-sticky" id="mobSticky">
-  <a href="contact.html">Start a Project →</a>
+<div class="mob-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html">Work</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-cta">Start a Project →</a>
 </div>
 
 <!-- HERO -->
@@ -462,7 +551,6 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
   </div>
   <div class="footer-bottom">
     <span>© 2025 DZiel Creative Ltd. All rights reserved.</span>
-    <div style="display:flex;gap:16px"><a href="privacy-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem">Privacy Policy</a><a href="cookie-policy.html" style="color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem">Cookie Policy</a></div>
     <div class="footer-socials">
       <a class="social-link" href="#" title="LinkedIn">in</a>
       <a class="social-link" href="#" title="Behance">Be</a>
@@ -528,6 +616,54 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:52px 60px 30
     });
   }
 })();
+
+  /* ── GDPR COOKIE CONSENT ── */
+  (function(){
+    var KEY = 'dziel-cookie-consent';
+    var popup    = document.getElementById('cookiePopup');
+    var backdrop = document.getElementById('cookieBackdrop');
+
+    function dismiss(choice){
+      popup.classList.remove('show');
+      backdrop.classList.remove('show');
+      try{ localStorage.setItem(KEY, choice); }catch(e){}
+      if(choice === 'accepted') loadAnalytics();
+    }
+
+    function loadAnalytics(){
+      /* Replace G-XXXXXXXXXX with your GA4 ID when ready */
+      /* var GA_ID='G-XXXXXXXXXX';
+      var s=document.createElement('script');
+      s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+      s.async=true;document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js',new Date());gtag('config',GA_ID,{anonymize_ip:true}); */
+    }
+
+    /* Show if no previous choice */
+    var saved;
+    try{ saved = localStorage.getItem(KEY); }catch(e){}
+    if(!saved){
+      setTimeout(function(){
+        popup.classList.add('show');
+        backdrop.classList.add('show');
+      }, 1200);
+    } else if(saved === 'accepted'){
+      loadAnalytics();
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click',    function(){ dismiss('accepted'); });
+    document.getElementById('cookieReject').addEventListener('click',     function(){ dismiss('rejected'); });
+    document.getElementById('cookieClose').addEventListener('click',      function(){ dismiss('rejected'); });
+    document.getElementById('cookieBackdrop').addEventListener('click',   function(){ dismiss('rejected'); });
+
+    /* Customise: open cookie policy page */
+    document.getElementById('cookieCustomise').addEventListener('click',  function(){
+      window.location.href = 'cookie-policy.html';
+    });
+  })();
+
 </script>
 </body>
 </html>
