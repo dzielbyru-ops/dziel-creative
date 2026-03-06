@@ -289,25 +289,79 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
 }
 
 
-/* ── GDPR Cookie Modal ── */
-.ck-overlay{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.55);opacity:0;transition:opacity 0.3s;pointer-events:none}
+
+
+/* ── Cookie Consent Modal ── */
+.ck-overlay{
+  position:fixed;inset:0;z-index:9998;
+  background:rgba(0,0,0,0.6);
+  opacity:0;transition:opacity 0.3s;pointer-events:none;
+}
 .ck-overlay.show{opacity:1;pointer-events:all}
-.ck-modal{position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-48%);width:calc(100% - 40px);max-width:420px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.45);padding:28px 28px 24px;opacity:0;transition:opacity 0.35s,transform 0.35s;pointer-events:none}
-.ck-modal.show{opacity:1;transform:translate(-50%,-50%);pointer-events:all}
-.ck-close{position:absolute;top:12px;right:14px;background:none;border:none;cursor:pointer;color:var(--muted);font-size:1.1rem;line-height:1;padding:4px 6px;transition:color 0.2s}
-.ck-close:hover{color:var(--txt)}
-.ck-modal h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;color:var(--txt);margin-bottom:14px}
-.ck-modal p{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:22px}
+.ck-modal{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-46%);
+  z-index:9999;
+  width:calc(100% - 48px);max-width:400px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:32px 28px 26px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.5);
+  opacity:0;transition:opacity 0.3s,transform 0.3s;
+  pointer-events:none;
+}
+.ck-modal.show{
+  opacity:1;
+  transform:translate(-50%,-50%);
+  pointer-events:all;
+}
+.ck-modal-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;cursor:pointer;
+  color:var(--muted);font-size:1.1rem;line-height:1;padding:4px;
+  transition:color 0.2s;
+}
+.ck-modal-close:hover{color:var(--txt)}
+.ck-modal h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.15rem;font-weight:800;
+  color:var(--txt);margin-bottom:14px;
+}
+.ck-modal p{
+  font-size:0.87rem;color:var(--muted);
+  line-height:1.7;margin-bottom:24px;
+}
 .ck-modal p a{color:var(--accent);text-decoration:none;font-weight:500}
 .ck-modal p a:hover{text-decoration:underline}
-.ck-actions{display:flex;gap:10px}
-.ck-btn{flex:1;padding:11px 10px;border-radius:4px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.03em;cursor:pointer;transition:background 0.2s,border-color 0.2s,color 0.2s;text-align:center;white-space:nowrap}
-.ck-btn-outline{background:transparent;color:var(--txt);border:1.5px solid var(--borderM)}
-.ck-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-.ck-btn-accept{background:#4F46E5;color:#fff!important;border:1.5px solid #4F46E5}
-.ck-btn-accept:hover{background:#4338CA;border-color:#4338CA}
-@media(max-width:480px){.ck-modal{padding:24px 20px 20px}.ck-actions{flex-direction:column}}
-
+.ck-modal-actions{display:flex;gap:10px}
+.ck-modal-btn{
+  flex:1;padding:11px 8px;
+  border-radius:5px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.8rem;font-weight:700;letter-spacing:0.03em;
+  cursor:pointer;text-align:center;
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
+}
+.ck-modal-btn-outline{
+  background:transparent;
+  color:var(--txt);
+  border:1.5px solid var(--borderM);
+}
+.ck-modal-btn-outline:hover{
+  border-color:var(--accent);color:var(--accent);
+}
+.ck-modal-btn-solid{
+  background:#4F46E5;color:#fff!important;
+  border:1.5px solid #4F46E5;
+}
+.ck-modal-btn-solid:hover{background:#4338CA;border-color:#4338CA}
+@media(max-width:440px){
+  .ck-modal{padding:28px 20px 22px}
+  .ck-modal-actions{flex-direction:column}
+  .ck-modal-btn{flex:none;width:100%}
+}
 </style>
 </head>
 <body>
@@ -575,6 +629,20 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
   </div>
 </footer>
 
+
+<!-- ── Cookie Consent Modal ── -->
+<div class="ck-overlay" id="ckOverlay"></div>
+<div class="ck-modal" id="ckModal" role="dialog" aria-modal="true" aria-labelledby="ckTitle">
+  <button class="ck-modal-close" id="ckClose" aria-label="Close">✕</button>
+  <h3 id="ckTitle">We value your privacy</h3>
+  <p>We use cookies to enhance your browsing experience, serve personalised content, and analyse our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="cookie-policy.html">Cookie Policy</a></p>
+  <div class="ck-modal-actions">
+    <button class="ck-modal-btn ck-modal-btn-outline" id="ckCustomise">Customise</button>
+    <button class="ck-modal-btn ck-modal-btn-outline" id="ckReject">Reject All</button>
+    <button class="ck-modal-btn ck-modal-btn-solid" id="ckAccept">Accept All</button>
+  </div>
+</div>
+
 <script>
 (function() {
   /* ── 1. THEME ── */
@@ -664,40 +732,34 @@ footer{background:var(--ftrBg);color:rgba(255,255,255,0.38);padding:56px 60px 32
 
 })();
 
-  /* Cookie modal */
+  /* ── Cookie consent modal ── */
   (function(){
-    var K='dziel-cookie-consent';
-    var modal=document.getElementById('ckModal');
-    var overlay=document.getElementById('ckOverlay');
-    var saved;try{saved=localStorage.getItem(K);}catch(e){}
+    var KEY = 'dziel-cookie-consent';
+    var modal   = document.getElementById('ckModal');
+    var overlay = document.getElementById('ckOverlay');
+    if(!modal) return;
+    var saved; try{ saved = localStorage.getItem(KEY); }catch(e){}
     if(!saved){
-      setTimeout(function(){modal.classList.add('show');overlay.classList.add('show');},800);
+      setTimeout(function(){
+        modal.classList.add('show');
+        overlay.classList.add('show');
+      }, 700);
     }
-    function dismiss(v){
-      modal.classList.remove('show');overlay.classList.remove('show');
-      try{localStorage.setItem(K,v);}catch(e){}
+    function dismiss(val){
+      modal.classList.remove('show');
+      overlay.classList.remove('show');
+      try{ localStorage.setItem(KEY, val); }catch(e){}
     }
-    document.getElementById('ckAccept').onclick=function(){dismiss('accepted');};
-    document.getElementById('ckReject').onclick=function(){dismiss('rejected');};
-    document.getElementById('ckClose').onclick=function(){dismiss('rejected');};
-    overlay.onclick=function(){dismiss('rejected');};
-    document.getElementById('ckCustomise').onclick=function(){
-      dismiss('pending');window.location.href='cookie-preferences.html';
+    document.getElementById('ckAccept').onclick   = function(){ dismiss('accepted'); };
+    document.getElementById('ckReject').onclick    = function(){ dismiss('rejected'); };
+    document.getElementById('ckClose').onclick     = function(){ dismiss('rejected'); };
+    overlay.onclick                                = function(){ dismiss('rejected'); };
+    document.getElementById('ckCustomise').onclick = function(){
+      dismiss('pending');
+      window.location.href = 'cookie-preferences.html';
     };
   })();
 </script>
 
-<!-- Cookie Modal -->
-<div class="ck-overlay" id="ckOverlay"></div>
-<div class="ck-modal" id="ckModal" role="dialog" aria-modal="true" aria-labelledby="ckTitle">
-  <button class="ck-close" id="ckClose" aria-label="Close">✕</button>
-  <h3 id="ckTitle">We value your privacy</h3>
-  <p>We use cookies to enhance your browsing experience, serve personalised content, and analyse our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="cookie-policy.html">Cookie Policy</a></p>
-  <div class="ck-actions">
-    <button class="ck-btn ck-btn-outline" id="ckCustomise">Customise</button>
-    <button class="ck-btn ck-btn-outline" id="ckReject">Reject All</button>
-    <button class="ck-btn ck-btn-accept" id="ckAccept">Accept All</button>
-  </div>
-</div>
 </body>
 </html>
